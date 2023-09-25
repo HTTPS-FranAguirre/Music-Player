@@ -13,6 +13,7 @@ body {
 .head {
     width: 320px;
     height: 144px;
+    border-radius: 10px;
     border: 1px solid red;
     display: flex;
 }
@@ -22,7 +23,6 @@ body {
 .head__container-left {
     width: 96px;
     height: 144px;
-    border: 1px solid orangered;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -48,7 +48,6 @@ body {
 .head__container-right {
     width: 224px;
     height: 144px;
-    border: 1px solid orange;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
