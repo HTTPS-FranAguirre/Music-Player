@@ -10,7 +10,7 @@ body {
     align-items: center;
 }
 
-.head-container {
+.head {
     width: 320px;
     height: 144px;
     border: 1px solid red;
