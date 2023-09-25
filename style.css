@@ -1,6 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.head-container {
+
 }
