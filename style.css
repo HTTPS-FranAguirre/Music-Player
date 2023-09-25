@@ -53,4 +53,29 @@ body {
     width: 224px;
     height: 144px;
     border: 1px solid orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.head__artist-song-title {
+    width: 200px;
+    height: 17px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.head__song-control {
+    width: 199px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.head__song-duration-bar {
+    width: 200px;
+    height: 13px;
+    border-radius: 10px 0 10px 0;
+    border: 1px solid black;
 }
