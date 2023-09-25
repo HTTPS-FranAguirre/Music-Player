@@ -14,4 +14,17 @@ body {
     width: 320px;
     height: 144px;
     border: 1px solid red;
+    display: flex;
+}
+
+.head__container-left {
+    width: 96px;
+    height: 144px;
+    border: 1px solid orangered;
+}
+
+.head__container-right {
+    width: 224px;
+    height: 144px;
+    border: 1px solid orange;
 }
