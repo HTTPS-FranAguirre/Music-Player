@@ -12,7 +12,7 @@ body {
 
 .head {
     width: 320px;
-    height: 144px;
+    height: 160px;
     border-radius: 10px;
     border: 1px solid red;
     display: flex;
@@ -22,10 +22,10 @@ body {
 
 .head__container-left {
     width: 96px;
-    height: 144px;
+    height: 160px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -38,7 +38,7 @@ body {
 
 .head__current-song-time {
     width: 72px;
-    height: 36px;
+    height: 54px;
     border-radius: 10px;
     border: 1px solid black;
 }
@@ -47,7 +47,7 @@ body {
 
 .head__container-right {
     width: 224px;
-    height: 144px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -56,21 +56,30 @@ body {
 
 .head__artist-song-title {
     width: 200px;
-    height: 17px;
+    height: 20px;
     border-radius: 10px;
     border: 1px solid black;
 }
 
 .head__song-control {
-    width: 199px;
-    height: 35px;
+    width: 209px;
+    height: 37px;
     border-radius: 10px;
     border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.head-container__icon {
+    width: 37px;
+    height: 37px;
+    border-radius: 10px;
+    border: 1px solid green;
 }
 
 .head__song-duration-bar {
     width: 200px;
-    height: 13px;
-    border-radius: 10px 0 10px 0;
+    height: 16px;
+    border-radius: 20px 0 20px 0;
     border: 1px solid black;
 }
