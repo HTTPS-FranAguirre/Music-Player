@@ -10,6 +10,10 @@ body {
     align-items: center;
 }
 
+p {
+    font-family: 'IBM Plex Mono', monospace;
+}
+
 .head {
     width: 320px;
     height: 160px;
@@ -117,9 +121,4 @@ svg {
     height: 32px;
     border-radius: 10px;
     border: 1px solid black;
-}
-
-.head-container__icon {
-    font-family: 'IBM Plex Mono', monospace;
-
 }
