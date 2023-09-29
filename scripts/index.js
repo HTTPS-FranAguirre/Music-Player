@@ -3,8 +3,7 @@ const d = document;
 const $playlist = d.querySelector(".playlist");
 
 const $playlistSong = d.querySelectorAll(".playlist__song-container");
-const $p = [...d.querySelectorAll(".playlist__song-container > p")];
-// const $p = d.querySelectorAll(".playlist__song-container > p");
+const $playlistSongPrueba = [...d.querySelectorAll(".playlist__song-container")];
 
 const $artistSongTitle = d.querySelector(".head__artist-song-title > p");
 
@@ -19,27 +18,28 @@ const $artistSongTitle = d.querySelector(".head__artist-song-title > p"); */
 $playlist.addEventListener("click", (e) => {
     for (let i = 0; i < $playlistSong.length; i++) {
         if(e.target === $playlistSong[i]){
-            console.log(e);
             console.log("Haz apretado el array " + i)
+            // $playlistSong[i].classList.add('active');
         }
     }
 
     if(e.target.textContent) {
+        console.log(e);
         const contenedorMusica = e.target.textContent;
+        e.target.parentElement.classList.add('active');
         $artistSongTitle.textContent = e.target.textContent;
         const song = d.createElement("audio");
         song.src=`../songs/${contenedorMusica}.mp3`
         song.play();
     }
-
-
-    // if ($playlistSong) {
-    //     $artistSongTitle.textContent = $p.textContent;
-    // }
-    // console.log(e.target);
 })
 
-/* $playlistSong.addEventListener("click", () => {
-    $artistSongTitle.textContent = $playlistSong.textContent;
-    $song.play();
-}); */
+console.log($playlistSongPrueba[10])
+console.log($playlistSong[10])
+
+// const almacenamiento = $playlistSongPrueba.map((el) => 
+//     {
+//         myArray.push(el);
+//     }
+// );
+// console.log(almacenamiento);

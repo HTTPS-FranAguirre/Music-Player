@@ -137,3 +137,7 @@ svg {
     background-color: black;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.50) 100%);
 }
+
+.active {
+    background-color: #52FF00;
+}
