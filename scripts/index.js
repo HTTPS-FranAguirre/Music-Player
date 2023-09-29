@@ -17,14 +17,18 @@ const $artistSongTitle = d.querySelector(".head__artist-song-title > p"); */
 
 
 $playlist.addEventListener("click", (e) => {
-    if (e.target === $playlistSong[5]){
-        console.log("f")
+    for (let i = 0; i < $playlistSong.length; i++) {
+        if(e.target === $playlistSong[i]){
+            console.log(e);
+            console.log("Haz apretado el array " + i)
+        }
     }
+
     if(e.target.textContent) {
         const contenedorMusica = e.target.textContent;
         $artistSongTitle.textContent = e.target.textContent;
         const song = d.createElement("audio");
-        song.src=`../songs/${contenedorMusica}`
+        song.src=`../songs/${contenedorMusica}.mp3`
         song.play();
     }
 
