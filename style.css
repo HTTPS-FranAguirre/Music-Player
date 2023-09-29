@@ -22,7 +22,6 @@ p {
     max-height: 160px;
     height: 25vh;
     border-radius: 10px;
-    border: 1px solid red;
     display: flex;
     background-image: url("images/head-background-image.png");
 }
@@ -111,7 +110,6 @@ svg {
     width: 320px;
     max-height: 756px;
     height: 75vh;
-    border: 1px solid red;
     overflow: auto;
     background-image: url("images/playlist-background-image.png");
 }
