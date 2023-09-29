@@ -29,7 +29,7 @@ $playlist.addEventListener("click", (e) => {
         e.target.parentElement.classList.add('active');
         $artistSongTitle.textContent = e.target.textContent;
         const song = d.createElement("audio");
-        song.src=`../songs/${contenedorMusica}.mp3`
+        song.src=`./songs/${contenedorMusica}.mp3`
         song.play();
     }
 })
