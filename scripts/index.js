@@ -8,35 +8,26 @@ const $p = [...d.querySelectorAll(".playlist__song-container > p")];
 
 const $artistSongTitle = d.querySelector(".head__artist-song-title > p");
 
+const $song = d.querySelectorAll("audio");
+
 /* const $playlistSong = d.querySelector(".playlist__song-container:first-child");
-const $song = d.querySelector("audio");
 const $artistSongTitle = d.querySelector(".head__artist-song-title > p"); */
 
 
 
-const debug = (param) => console.log(...param);
-debug($p);
-
-const OBJ = { nombre: $p
-}
-
-console.log(OBJ.nombre[1])
-
-// console.log($p.map)
-
 
 $playlist.addEventListener("click", (e) => {
-    const $2 = $p[2];
-
-    // console.log($playlistSong);
-    // console.log($4);
-    // console.log($p);
-
-
-    if (e.target === $2) {
-        // console.log("Hiiii");
-        $artistSongTitle.textContent = $2.textContent;
+    if (e.target === $playlistSong[5]){
+        console.log("f")
     }
+    if(e.target.textContent) {
+        const contenedorMusica = e.target.textContent;
+        $artistSongTitle.textContent = e.target.textContent;
+        const song = d.createElement("audio");
+        song.src=`../songs/${contenedorMusica}`
+        song.play();
+    }
+
 
     // if ($playlistSong) {
     //     $artistSongTitle.textContent = $p.textContent;
