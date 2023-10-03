@@ -21,6 +21,8 @@ let contenedor = [];
 
 console.log(myArray[0]);
 
+
+
 /* for (let i = 0; i < myArray.length; i++) {
     const cont = myArray[i].innerText;
     contenedor.push(cont);
@@ -35,49 +37,19 @@ console.log(myArray[0]);
 $playlist.addEventListener("click", (e) => {
     let nombre = e.target.textContent;
     $artistSongTitle.textContent = nombre;
+
     
-    
+    // if (myArray.indexOf(e.target)){
+    //     console.log(myArray.findIndex())
+    // }
 
     for (let i = 0; i < $playlistSongName.length; i++) {
-        const tempo = $playlistSongName[i].innerHTML;
-        // console.log(tempo);
-        
-        if(e.target === $playlistSongName[0]) {
-            $playlistSong[0].classList.add("active");
-        } else {
-            $playlistSong[0].classList.remove("active");
-        }
 
-        if(e.target === $playlistSongName[1]) {
-            $playlistSong[1].classList.add("active");
+         if(e.target === $playlistSong[i] || e.target === $playlistSongName[i]) {
+            $playlistSong[i].classList.add("active");     
         } else {
-            $playlistSong[1].classList.remove("active");
+            $playlistSong[i].classList.remove("active");
         }
-
-        if(e.target === $playlistSongName[2]) {
-            $playlistSong[2].classList.add("active");
-        } else {
-            $playlistSong[2].classList.remove("active");
-        }
-
-        if(e.target === $playlistSongName[3]) {
-            $playlistSong[3].classList.add("active");
-        } else {
-            $playlistSong[3].classList.remove("active");
-        }
-
-        if(e.target === $playlistSongName[4]) {
-            $playlistSong[4].classList.add("active");
-        } else {
-            $playlistSong[4].classList.remove("active");
-        }
-
-        if(e.target === $playlistSongName[5]) {
-            $playlistSong[5].classList.add("active");
-        } else {
-            $playlistSong[5].classList.remove("active");
-        }
-
     }
 
     // if($playlistSong.textContent === e.target.textContent) {
