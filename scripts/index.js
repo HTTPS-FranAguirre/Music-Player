@@ -3,8 +3,9 @@ const d = document;
 const $playlist = d.querySelector(".playlist");
 
 const $playlistSong = d.querySelectorAll(".playlist__song-container");
+const $playlistSongName = d.querySelectorAll(".playlist__song-container p");
 
-const $artistSongTitle = d.querySelector(".head__artist-song-title > p");
+const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
 // const $song = d.querySelectorAll("audio");
 
@@ -12,28 +13,76 @@ const $artistSongTitle = d.querySelector(".head__artist-song-title > p");
 const $artistSongTitle = d.querySelector(".head__artist-song-title > p"); */
 
 
-console.log($playlistSong);
+// console.log($playlistSong);
 
 let myArray = Array.from($playlistSong);
 let contenedor = [];
 
 
+console.log(myArray[0]);
 
-console.log(myArray);
-
-for (let i = 0; i < myArray.length; i++) {
+/* for (let i = 0; i < myArray.length; i++) {
     const cont = myArray[i].innerText;
     contenedor.push(cont);
-}
+} */
 
 
-console.log(contenedor);
+// console.log(contenedor);
+// console.log($playlistSongName);
+
+
 
 $playlist.addEventListener("click", (e) => {
     let nombre = e.target.textContent;
     $artistSongTitle.textContent = nombre;
+    
+    
 
+    for (let i = 0; i < $playlistSongName.length; i++) {
+        const tempo = $playlistSongName[i].innerHTML;
+        // console.log(tempo);
+        
+        if(e.target === $playlistSongName[0]) {
+            $playlistSong[0].classList.add("active");
+        } else {
+            $playlistSong[0].classList.remove("active");
+        }
 
+        if(e.target === $playlistSongName[1]) {
+            $playlistSong[1].classList.add("active");
+        } else {
+            $playlistSong[1].classList.remove("active");
+        }
+
+        if(e.target === $playlistSongName[2]) {
+            $playlistSong[2].classList.add("active");
+        } else {
+            $playlistSong[2].classList.remove("active");
+        }
+
+        if(e.target === $playlistSongName[3]) {
+            $playlistSong[3].classList.add("active");
+        } else {
+            $playlistSong[3].classList.remove("active");
+        }
+
+        if(e.target === $playlistSongName[4]) {
+            $playlistSong[4].classList.add("active");
+        } else {
+            $playlistSong[4].classList.remove("active");
+        }
+
+        if(e.target === $playlistSongName[5]) {
+            $playlistSong[5].classList.add("active");
+        } else {
+            $playlistSong[5].classList.remove("active");
+        }
+
+    }
+
+    // if($playlistSong.textContent === e.target.textContent) {
+    //     console.log("Hola")
+    // }
 
     // if($playlistSong.textContent === $artistSongTitle.textContent) {
     //     $playlistSong.classList.add('active');
