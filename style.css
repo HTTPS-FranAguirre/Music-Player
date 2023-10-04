@@ -74,6 +74,7 @@ p {
     color: #52FF00;
     font-size: 11px;
     text-wrap: nowrap;
+    overflow-x: hidden;
 }
 
 .head__song-control {
