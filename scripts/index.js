@@ -14,8 +14,8 @@ $playlist.addEventListener("click", (e) => {
 
          if(e.target === $playlistSong[i] || e.target === $playlistSongName[i]) {
             $artistSongTitle.textContent = $playlistSong[i].textContent;
-            audioActual[i].setAttribute("src", `../songs/${$playlistSongName[i].textContent}.mp3`);
-            audioActual[i].play();
+            $audioActual[i].setAttribute("src", `../songs/${$playlistSongName[i].textContent}.mp3`);
+            $audioActual[i].play();
 
             $playlistSong[i].classList.add("active");     
             $playlistSongName[i].classList.add("active__name");
@@ -32,8 +32,8 @@ $playlist.addEventListener("click", (e) => {
         } else {
             $playlistSong[i].classList.remove("active");
             $playlistSongName[i].classList.remove("active__name"); 
-            audioActual[i].pause();
-            audioActual[i].removeAttribute("src");
+            $audioActual[i].pause();
+            $audioActual[i].removeAttribute("src");
             // audioActual.removeAttribute("src");
         }
     }   
