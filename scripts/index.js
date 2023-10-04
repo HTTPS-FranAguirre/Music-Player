@@ -35,9 +35,6 @@ console.log(myArray[0]);
 
 
 $playlist.addEventListener("click", (e) => {
-    //let nombre = e.target.textContent;
-    //$artistSongTitle.textContent = nombre;
-
     
     // if (myArray.indexOf(e.target)){
     //     console.log(myArray.findIndex())
@@ -48,8 +45,10 @@ $playlist.addEventListener("click", (e) => {
          if(e.target === $playlistSong[i] || e.target === $playlistSongName[i]) {
             $artistSongTitle.textContent = $playlistSong[i].textContent;
             $playlistSong[i].classList.add("active");     
+            $playlistSongName[i].classList.add("active__name");     
         } else {
             $playlistSong[i].classList.remove("active");
+            $playlistSongName[i].classList.remove("active__name");     
         }
     }
 

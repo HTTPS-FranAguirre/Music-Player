@@ -140,6 +140,12 @@ svg {
     cursor: pointer;
 }
 
+/* DOM classes */
+
 .active {
     background-color: #52FF00;
+}
+
+.active__name {
+    color: #ffffff;
 }
