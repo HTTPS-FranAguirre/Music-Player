@@ -9,9 +9,6 @@ const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
 // const $song = d.querySelectorAll("audio");
 
-/* const $playlistSong = d.querySelector(".playlist__song-container:first-child");
-const $artistSongTitle = d.querySelector(".head__artist-song-title > p"); */
-
 
 // console.log($playlistSong);
 
@@ -19,27 +16,9 @@ let myArray = Array.from($playlistSong);
 let contenedor = [];
 
 
-console.log(myArray[0]);
-
-
-
-/* for (let i = 0; i < myArray.length; i++) {
-    const cont = myArray[i].innerText;
-    contenedor.push(cont);
-} */
-
-
-// console.log(contenedor);
-// console.log($playlistSongName);
-
 
 
 $playlist.addEventListener("click", (e) => {
-    
-    // if (myArray.indexOf(e.target)){
-    //     console.log(myArray.findIndex())
-    // }
-
     for (let i = 0; i < $playlistSongName.length; i++) {
 
          if(e.target === $playlistSong[i] || e.target === $playlistSongName[i]) {
@@ -50,16 +29,7 @@ $playlist.addEventListener("click", (e) => {
             $playlistSong[i].classList.remove("active");
             $playlistSongName[i].classList.remove("active__name");     
         }
-    }
-
-    // if($playlistSong.textContent === e.target.textContent) {
-    //     console.log("Hola")
-    // }
-
-    // if($playlistSong.textContent === $artistSongTitle.textContent) {
-    //     $playlistSong.classList.add('active');
-    // }
-    
+    }   
 })
 
 
