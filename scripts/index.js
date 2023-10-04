@@ -7,27 +7,39 @@ const $playlistSongName = d.querySelectorAll(".playlist__song-container p");
 
 const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
-// const $song = d.querySelectorAll("audio");
+// const $song = d.querySelectorAll(".playlist__song-container audio");
 
+// console.log($song);
+let audioActual= d.querySelectorAll("audio");
 
-// console.log($playlistSong);
-
-let myArray = Array.from($playlistSong);
-let contenedor = [];
-
-
-
+console.log(audioActual);
 
 $playlist.addEventListener("click", (e) => {
     for (let i = 0; i < $playlistSongName.length; i++) {
 
          if(e.target === $playlistSong[i] || e.target === $playlistSongName[i]) {
             $artistSongTitle.textContent = $playlistSong[i].textContent;
+            audioActual[i].setAttribute("src", `../songs/${$playlistSongName[i].textContent}.mp3`);
+            audioActual[i].play();
+
             $playlistSong[i].classList.add("active");     
-            $playlistSongName[i].classList.add("active__name");     
+            $playlistSongName[i].classList.add("active__name");
+
+            // $song[i].play(); 
+
+
+            //Este código sirve para tener el tiempo actual de la canción (Implementar más adelante)
+            // const h = $song[i].currentTime;
+            // console.log(h);  
+            //Este código sirve para tener la duracion de la canción (Implementar más adelante)
+            // const g = $song[i].duration;
+            // console.log(g);  
         } else {
             $playlistSong[i].classList.remove("active");
-            $playlistSongName[i].classList.remove("active__name");     
+            $playlistSongName[i].classList.remove("active__name"); 
+            audioActual[i].pause();
+            audioActual[i].removeAttribute("src");
+            // audioActual.removeAttribute("src");
         }
     }   
 })
