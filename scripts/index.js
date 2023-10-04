@@ -7,12 +7,7 @@ const $playlistSongName = d.querySelectorAll(".playlist__song-container p");
 
 const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
-// const $song = d.querySelectorAll(".playlist__song-container audio");
-
-// console.log($song);
-let audioActual= d.querySelectorAll("audio");
-
-console.log(audioActual);
+const $audioActual= d.querySelectorAll("audio");
 
 $playlist.addEventListener("click", (e) => {
     for (let i = 0; i < $playlistSongName.length; i++) {
