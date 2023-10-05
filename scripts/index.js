@@ -14,7 +14,6 @@ $playlist.addEventListener("click", (e) => {
 
          if(e.target === $playlistSong[i] || e.target === $playlistSongName[i]) {
             $artistSongTitle.textContent = $playlistSong[i].textContent;
-            console.log(`../songs/${$playlistSongName[i].textContent}.mp3`)
             $audioActual[i].setAttribute("src", `../songs/${$playlistSongName[i].textContent}.mp3`);
 
             $audioActual[i].play();
