@@ -20,18 +20,21 @@ $playlist.addEventListener("click", (e) => {
             
             $song[i].play();
             
-            
-            if (Number.isNaN($song[i].duration)) {
-                setTimeout(() => {
-                    $song[i].duration;
-                    console.log(Number.isNaN($song[i].duration));
-                }, 1000);
-            }
-            
                 setTimeout(() => {
                 let minutos = Math.floor($song[i].duration / 60);
                 let segundos = Math.floor($song[i].duration % 60);
-                let duracionTotal = `${minutos.toFixed(0)} : ${segundos.toFixed(0)}`
+                let segundosLength = segundos.toString();
+                let minutosLength = minutos.toString();
+
+                if (segundosLength.length < 2){
+                    segundosLength = `0${segundos}`
+                }
+                
+                if (minutosLength.length < 2){
+                    minutosLength = `0${minutos}`
+                }
+                
+                let duracionTotal = `${minutosLength}:${segundosLength}`
                 $headCurrentSongTime.textContent = duracionTotal
               }, 1500);
 
