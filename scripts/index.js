@@ -27,7 +27,7 @@ $playlist.addEventListener("click", (e) => {
                 const $parrafo = d.createElement("p");
                 $parrafo.textContent = duracionTotal
                 $headCurrentSongTime.appendChild($parrafo);
-              }, 150);
+              }, 500);
             
 
             $playlistSong[i].classList.add("active");     
