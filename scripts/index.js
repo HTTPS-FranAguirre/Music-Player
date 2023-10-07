@@ -1,6 +1,6 @@
 const d = document;
 
-const $headCurrentSongTime = d.querySelector(".head__current-song-time");
+const $headCurrentSongTime = d.querySelector(".head__current-song-time p");
 
 const $playlist = d.querySelector(".playlist");
 
@@ -19,16 +19,22 @@ $playlist.addEventListener("click", (e) => {
             $song[i].setAttribute("src", `./songs/${$playlistSongName[i].textContent}.mp3`);
             
             $song[i].play();
-
-            setTimeout(() => {
+            
+            
+            if (Number.isNaN($song[i].duration)) {
+                setTimeout(() => {
+                    $song[i].duration;
+                    console.log(Number.isNaN($song[i].duration));
+                }, 1000);
+            }
+            
+                setTimeout(() => {
                 let minutos = Math.floor($song[i].duration / 60);
                 let segundos = Math.floor($song[i].duration % 60);
                 let duracionTotal = `${minutos.toFixed(0)} : ${segundos.toFixed(0)}`
-                const $parrafo = d.createElement("p");
-                $parrafo.textContent = duracionTotal
-                $headCurrentSongTime.appendChild($parrafo);
+                $headCurrentSongTime.textContent = duracionTotal
               }, 1500);
-            
+
 
             $playlistSong[i].classList.add("active");     
             $playlistSongName[i].classList.add("active__name");
