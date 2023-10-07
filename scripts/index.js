@@ -19,6 +19,9 @@ $playlist.addEventListener("click", (e) => {
             $song[i].setAttribute("src", `./songs/${$playlistSongName[i].textContent}.mp3`);
             
             $song[i].play();
+
+            $playlistSong[i].classList.add("active");     
+            $playlistSongName[i].classList.add("active__name");
             
                 setTimeout(() => {
                 let minutos = Math.floor($song[i].duration / 60);
@@ -36,11 +39,22 @@ $playlist.addEventListener("click", (e) => {
                 
                 let duracionTotal = `${minutosLength}:${segundosLength}`
                 $headCurrentSongTime.textContent = duracionTotal
-              }, 1500);
 
+              }, 2000);
 
-            $playlistSong[i].classList.add("active");     
-            $playlistSongName[i].classList.add("active__name");
+              let temporizador = setInterval(() => {
+                console.log($song[i].currentTime.toFixed(0))
+
+                console.log($song[i].duration.toFixed(0)); 
+              }, 1000);
+            
+                setInterval(() => {
+                    if($song[i].currentTime.toFixed(0) === $song[i].duration.toFixed(0)) {
+                      clearInterval(temporizador);
+                      console.log("*Se ejecuta")
+                    }
+                }, 5000);
+              
 
             //Este código sirve para tener el tiempo actual de la canción (Implementar más adelante)
             // const h = $song[i].currentTime;
@@ -49,6 +63,7 @@ $playlist.addEventListener("click", (e) => {
             $playlistSong[i].classList.remove("active");
             $playlistSongName[i].classList.remove("active__name"); 
             $song[i].pause();
+            // $song[i].currentTime = 0;
             // $audioActual[i].removeAttribute("src");
         }
     }   
