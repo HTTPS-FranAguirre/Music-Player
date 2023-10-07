@@ -27,7 +27,7 @@ $playlist.addEventListener("click", (e) => {
                 const $parrafo = d.createElement("p");
                 $parrafo.textContent = duracionTotal
                 $headCurrentSongTime.appendChild($parrafo);
-              }, 1000);
+              }, 1500);
             
 
             $playlistSong[i].classList.add("active");     
@@ -35,10 +35,7 @@ $playlist.addEventListener("click", (e) => {
 
             //Este código sirve para tener el tiempo actual de la canción (Implementar más adelante)
             // const h = $song[i].currentTime;
-            // console.log(h);  
-            //Este código sirve para tener la duracion de la canción (Implementar más adelante)
-            // const g = $song.duration;
-            // console.log(g);  
+            // console.log(h);   
         } else {
             $playlistSong[i].classList.remove("active");
             $playlistSongName[i].classList.remove("active__name"); 
