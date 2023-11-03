@@ -19,6 +19,7 @@ $playlistSong.forEach(recorrido => {
 
 /* Reproductor de musica actual */
 $playlist.addEventListener("click", (e) => {
+    $artistSongTitle.textContent = e.target.textContent
     $playlistSongName.forEach(function callback(currentValue, index) {
         let musica = $playlistSong[index].querySelector("audio");
         if(e.target === currentValue){
