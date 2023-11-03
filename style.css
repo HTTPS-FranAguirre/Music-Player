@@ -10,13 +10,20 @@ body {
     align-items: center;
 }
 
-p, span {
+p {
     margin: 0;
     font-family: 'IBM Plex Mono', monospace;
     cursor: pointer;
     width: 100%;
     color: #52FF00;
 }
+
+span {
+    font-family: 'Anton', sans-serif;
+    color: #52FF00;
+}
+
+
 
 .head {
     width: 320px;
@@ -73,7 +80,7 @@ p, span {
 
 .head__artist-song-title > p {
     color: #52FF00;
-    font-size: 11px;
+    font-size: 14px;
     text-wrap: nowrap;
     overflow-x: hidden;
 }
