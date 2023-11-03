@@ -10,10 +10,11 @@ body {
     align-items: center;
 }
 
-p {
+p, span {
     margin: 0;
     font-family: 'IBM Plex Mono', monospace;
     cursor: pointer;
+    width: 100%;
     color: #52FF00;
 }
 
@@ -107,7 +108,6 @@ svg {
 }
 
 /* playlist */
-
 .playlist {
     width: 320px;
     max-height: 756px;
@@ -135,7 +135,6 @@ svg {
     width: 289px;
     height: 32px;
     border-radius: 10px;
-    border: 1px solid black;
     display: flex;
     align-items: center;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.50) 100%);

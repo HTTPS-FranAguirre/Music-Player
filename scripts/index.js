@@ -1,7 +1,8 @@
 const d = document;
 
-const $headCurrentSongTimeActual = d.querySelector(".head__current-song-time span:first-child");
-const $headCurrentSongTime = d.querySelector(".head__current-song-time span:last-child");
+const $headCurrentSongTime = d.querySelector(".head__current-song-time span:first-child");
+const $headCurrentSongTimeReal = d.querySelector(".head__current-song-time span:last-child");
+const $headCurrentSongTimePrueba = d.querySelector(".head__current-song-time p");
 
 const $playlist = d.querySelector(".playlist");
 
@@ -10,17 +11,159 @@ const $playlistSongName = d.querySelectorAll(".playlist__song-container p");
 
 const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
-const $song= d.querySelectorAll("audio");
+/* Creacion dinamica de src en etiquetas "audio" */
+$playlistSong.forEach(recorrido => {
+    const texto = recorrido.firstElementChild.textContent;
+    const musiquita = recorrido.lastElementChild;
+    musiquita.setAttribute("src", `./songs/${texto}.mp3`);
+})
+
+/* Reproductor de musica actual */
+$playlist.addEventListener("click", (e) => {
+    $playlistSongName.forEach(function callback(currentValue, index) {
+        let musica = $playlistSong[index].querySelector("audio");
+        if(e.target === currentValue){
+            $playlistSong[index].style.backgroundColor = "green";
+            musica.play();
+        } else {
+            $playlistSong[index].style.backgroundColor = "";
+            musica.pause();
+        }
+    });
+})
+
+/* Duración de la canción y tiempo actual */
+const $song = d.querySelectorAll("audio");
+console.log($song);
+
+$song.forEach(reproducciendo => {
+    reproducciendo.addEventListener("play", (e) => {
+    let reproducciendoActual = e.target;
+    console.log("Reproduciendo");
+    console.log(reproducciendoActual);
+
+    let minutos = Math.floor(reproducciendoActual.duration / 60);
+    let segundos = Math.floor(reproducciendoActual.duration % 60);
+    let minutosText = minutos.toString();
+    let segundosText = segundos.toString();
+
+    console.log(minutos,segundos)
+
+    if (minutosText.length < 2){
+        minutosText = `0${minutos}`
+    }
+    if (segundosText.length < 2){
+        segundosText = `0${segundos}`
+    }
+
+    let duracionTotal = `${minutosText}:${segundosText}`
+    $headCurrentSongTime.textContent = duracionTotal
+
+    let descartes = setInterval(() => {
+        console.log(e.target.currentTime)
+
+        let minutos = Math.floor(reproducciendoActual.currentTime / 60);
+        let segundos = Math.floor(reproducciendoActual.currentTime % 60);
+        let minutosLength = minutos.toString();
+        let segundosLength = segundos.toString();
+
+        if (segundosLength.length < 2){
+            segundosLength = `0${segundos}`
+        }
+        
+        if (minutosLength.length < 2){
+            minutosLength = `0${minutos}`
+        }
+        
+        let tiempoActual = `${minutosLength}:${segundosLength}`
+
+        if(!reproducciendoActual.currentTime){
+            clearInterval(descartes);
+        }
+        $headCurrentSongTimeReal.textContent = tiempoActual
+    }, 1000);
+    
+})
+    reproducciendo.addEventListener("pause", (e) => {
+        console.log("Detenido");
+        let cancionAnterior = e.target;
+        cancionAnterior.currentTime = 0;
+    })
+})
+/* Reproductor de musica */
+
+// $playlist.addEventListener("click", (e) => {
+//     let hi = e.target.nextElementSibling;
+    
+// })
+
+/*  */
+
+
+/* Creacion dinamica de musica en el dom al inicio */
+// const nombre = [];
+
+// const coincide = (element) => element === e.target.innerText;
+//     nameSong = nombre.find(coincide);
+//     console.log(nameSong)
+//     const $audio = document.createElement("audio")
+//         $audio.src = `./songs/${nameSong}.mp3`;
+//         id = nombre.findIndex(coincide);
+//         console.log(id);
+//             $playlistSong[id].appendChild($audio);
+/*  */
+
+/* const listaCanciones = Array.from($playlistSongName);
+
+
+for (let i = 0; i < listaCanciones.length; i++){
+    nombre.push(listaCanciones[i].innerHTML);
+}
+
+console.log(nombre);
+
+
+
 
 $playlist.addEventListener("click", (e) => {
 
+    // console.log(e);
+
+    // audio.pause();
+    
+
+    // const ggg = nombre.findIndex(coincide)
+
+    // console.log(ggg);
+
+    // console.log(e.target.innerText);
+
+
+    // const audio = new Audio(`./songs/${nombreCancion}.mp3`)
+      
+    // audio.play();
 
     for (let i = 0; i < $playlistSongName.length; i++) {
         if(e.target === $playlistSong[i] || e.target === $playlistSongName[i]) {
-            $artistSongTitle.textContent = $playlistSong[i].textContent;
-            $song[i].setAttribute("src", `./songs/${$playlistSongName[i].textContent}.mp3`);
 
-            $song[i].play();
+            
+
+    $audio.play();
+
+
+            // const audio = new Audio(`./songs/${$playlistSong[i].innerHTML}.mp3`)
+
+            
+
+            // audio.addEventListener("play", () => {
+            //     console.log("Se ha comenzado/reanudado la reproducción");
+            //   });
+
+            $artistSongTitle.textContent = $playlistSong[i].textContent;
+
+            // $song[i].setAttribute("src", `./songs/${$playlistSongName[i].textContent}.mp3`);
+
+            // $song[i].play();
 
             $playlistSong[i].classList.add("active");     
             $playlistSongName[i].classList.add("active__name");
@@ -29,6 +172,24 @@ $playlist.addEventListener("click", (e) => {
                 setTimeout(() => {
                 let minutos = Math.floor($song[i].duration / 60);
                 let segundos = Math.floor($song[i].duration % 60);
+                let segundosLength = segundos.toString();
+                let minutosLength = minutos.toString();
+
+                if (segundosLength.length < 2){
+                    segundosLength = `0${segundos}`
+                }
+                
+                if (minutosLength.length < 2){
+                    minutosLength = `0${minutos}`
+                }
+                
+                let duracionTotal = `${minutosLength}:${segundosLength}`
+                $headCurrentSongTime.textContent = duracionTotal
+
+              }, 3000);
+                setTimeout(() => {
+                let minutos = Math.floor($audio.duration / 60);
+                let segundos = Math.floor($audio.duration % 60);
                 let segundosLength = segundos.toString();
                 let minutosLength = minutos.toString();
 
@@ -62,13 +223,7 @@ $playlist.addEventListener("click", (e) => {
                     let tiempoActual = `${minutosLength}:${segundosLength}`
                     $headCurrentSongTimeActual.textContent = tiempoActual
                 }, 1000);
-
-
-                
-
               
-            
-
             
             // if ($song[i].paused === true) {
             //     console.log("ho")
@@ -89,10 +244,16 @@ $playlist.addEventListener("click", (e) => {
             // console.log(h);   
         } else {
             $playlistSong[i].classList.remove("active");
-            $playlistSongName[i].classList.remove("active__name"); 
+            $playlistSongName[i].classList.remove("active__name");
+            // $audio.pause(); 
+            if ($audio.play < 2) {
+                $audio.pause();
+            }
+
+            // $song[i].currentTime = 0;
             $headCurrentSongTime.textContent = `00:00`;
-            // audio.pause()
             // $audioActual[i].removeAttribute("src");
         }
     }   
 })
+ */
