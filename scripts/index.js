@@ -1,8 +1,7 @@
 const d = document;
 
-const $headCurrentSongTime = d.querySelector(".head__current-song-time span:first-child");
-const $headCurrentSongTimeReal = d.querySelector(".head__current-song-time span:last-child");
-const $headCurrentSongTimePrueba = d.querySelector(".head__current-song-time p");
+const $headCurrentSongTimeReal = d.querySelector(".head__current-song-time span:first-child");
+const $headCurrentSongTime = d.querySelector(".head__current-song-time span:last-child");
 
 const $playlist = d.querySelector(".playlist");
 
@@ -40,7 +39,7 @@ $song.forEach(reproducciendo => {
     reproducciendo.addEventListener("play", (e) => {
     let reproducciendoActual = e.target;
     console.log("Reproduciendo");
-    console.log(reproducciendoActual);
+    console.log(e);
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
     let segundos = Math.floor(reproducciendoActual.duration % 60);
@@ -60,7 +59,7 @@ $song.forEach(reproducciendo => {
     $headCurrentSongTime.textContent = duracionTotal
 
     let descartes = setInterval(() => {
-        console.log(e.target.currentTime)
+        // console.log(e.target.currentTime)
 
         let minutos = Math.floor(reproducciendoActual.currentTime / 60);
         let segundos = Math.floor(reproducciendoActual.currentTime % 60);
