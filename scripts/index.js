@@ -10,6 +10,10 @@ const $playlistSongName = d.querySelectorAll(".playlist__song-container p");
 
 const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
+const $headSongDurationBar = d.querySelector(".head__song-duration-bar progress");
+
+console.log($headSongDurationBar)
+
 /* Creacion dinamica de src en etiquetas "audio" */
 $playlistSong.forEach(recorrido => {
     const texto = recorrido.firstElementChild.textContent;
@@ -60,6 +64,9 @@ $song.forEach(reproducciendo => {
     $headCurrentSongTime.textContent = duracionTotal
 
     let descartes = setInterval(() => {
+        if(!reproducciendoActual.currentTime){
+            clearInterval(descartes);
+        }
         // console.log(e.target.currentTime)
 
         let minutos = Math.floor(reproducciendoActual.currentTime / 60);
@@ -77,11 +84,10 @@ $song.forEach(reproducciendo => {
         
         let tiempoActual = `${minutosLength}:${segundosLength}`
 
-        if(!reproducciendoActual.currentTime){
-            clearInterval(descartes);
-        }
         $headCurrentSongTimeReal.textContent = tiempoActual
     }, 1000);
+
+    
     
 })
     reproducciendo.addEventListener("pause", (e) => {
@@ -89,6 +95,13 @@ $song.forEach(reproducciendo => {
         let cancionAnterior = e.target;
         cancionAnterior.currentTime = 0;
     })
+
+    reproducciendo.addEventListener("timeupdate", () => {
+        $headSongDurationBar.value = reproducciendo.currentTime;
+        $headSongDurationBar.max = reproducciendo.duration;
+        // console.log($headSongDurationBar)
+        // console.log("Current second: ", Number.parseInt(reproducciendo.currentTime));
+      });
 })
 /* Reproductor de musica */
 
