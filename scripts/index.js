@@ -12,7 +12,13 @@ const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
 const $headSongDurationBar = d.querySelector(".head__song-duration-bar progress");
 
-console.log($headSongDurationBar)
+const $rango = d.querySelector(".rango");
+
+console.log($rango)
+
+// $rango.addEventListener("click", (e) => {
+//     console.log(e.target.valueAsNumber);
+// })
 
 /* Creacion dinamica de src en etiquetas "audio" */
 $playlistSong.forEach(recorrido => {
@@ -45,6 +51,12 @@ $song.forEach(reproducciendo => {
     let reproducciendoActual = e.target;
     console.log("Reproduciendo");
     console.log(e);
+
+    $rango.max = reproducciendoActual.duration;
+    $rango.addEventListener("click", (e) => {
+    reproducciendoActual.currentTime = e.target.valueAsNumber;
+})
+    
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
     let segundos = Math.floor(reproducciendoActual.duration % 60);
@@ -85,6 +97,7 @@ $song.forEach(reproducciendo => {
         let tiempoActual = `${minutosLength}:${segundosLength}`
 
         $headCurrentSongTimeReal.textContent = tiempoActual
+        
     }, 1000);
 
     
@@ -96,11 +109,10 @@ $song.forEach(reproducciendo => {
         cancionAnterior.currentTime = 0;
     })
 
-    reproducciendo.addEventListener("timeupdate", () => {
-        $headSongDurationBar.value = reproducciendo.currentTime;
-        $headSongDurationBar.max = reproducciendo.duration;
-        // console.log($headSongDurationBar)
-        // console.log("Current second: ", Number.parseInt(reproducciendo.currentTime));
+
+
+    reproducciendo.addEventListener("timeupdate", (e) => {
+        $rango.value = e.target.currentTime;
       });
 })
 /* Reproductor de musica */
