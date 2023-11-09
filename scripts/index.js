@@ -22,11 +22,6 @@ const $rango = d.querySelector(".rango");
 
 console.log($rango);
 
-$rango.addEventListener("click", (e) => {
-    console.log(e.target.valueAsNumber);
-    $rango.value = e.target.valueAsNumber;
-})
-
 /* Creacion dinamica de src en etiquetas "audio" */
 $playlistSong.forEach((recorrido) => {
   const texto = recorrido.firstElementChild.textContent;
@@ -61,7 +56,7 @@ $song.forEach((reproducciendo) => {
 
     $rango.max = reproducciendoActual.duration;
     $rango.addEventListener("click", (e) => {
-      reproducciendoActual.currentTime = e.target.valueAsNumber;
+        e.target.valueAsNumber = reproducciendoActual.currentTime;
     });
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
