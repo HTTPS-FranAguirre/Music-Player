@@ -56,7 +56,8 @@ $song.forEach((reproducciendo) => {
 
     $rango.max = reproducciendoActual.duration;
     $rango.addEventListener("click", (e) => {
-        e.target.valueAsNumber = reproducciendoActual.currentTime;
+    reproducciendoActual.currentTime = e.target.valueAsNumber;
+    console.log(e.target.valueAsNumber);
     });
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
