@@ -56,9 +56,11 @@ $song.forEach((reproducciendo) => {
 
     $rango.max = reproducciendoActual.duration;
     $rango.addEventListener("click", (e) => {
-    reproducciendoActual.currentTime = e.target.valueAsNumber;
-    console.log(e.target.valueAsNumber);
-    });
+        $rango.value = e.target.valueAsNumber;
+        reproducciendoActual.currentTime = e.target.valueAsNumber;
+        console.log(e.target)
+        console.log(reproducciendoActual.currentTime)
+        });
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
     let segundos = Math.floor(reproducciendoActual.duration % 60);
@@ -107,7 +109,8 @@ $song.forEach((reproducciendo) => {
     cancionAnterior.currentTime = 0;
   });
 
-//   reproducciendo.addEventListener("timeupdate", (e) => {
-    
-//   });
+  reproducciendo.addEventListener("timeupdate", (e) => {
+    $rango.value = e.target.currentTime;
+    console.log($rango.value)
+  });
 });
