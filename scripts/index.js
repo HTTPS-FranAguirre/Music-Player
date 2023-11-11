@@ -20,8 +20,6 @@ const $headSongDurationBar = d.querySelector(
 
 const $rango = d.querySelector(".rango");
 
-console.log($rango);
-
 /* Creacion dinamica de src en etiquetas "audio" */
 $playlistSong.forEach((recorrido) => {
   const texto = recorrido.firstElementChild.textContent;
@@ -41,34 +39,30 @@ $playlist.addEventListener("click", (e) => {
       $playlistSong[index].style.backgroundColor = "";
       musica.pause();
     }
+    $rango.addEventListener("click", (e) => {
+      console.log(e.target.value);
+      musica.currentTime = e.target.value;
+      console.log(musica.currentTime);
+    })
   });
 });
 
 /* Duración de la canción y tiempo actual */
 const $song = d.querySelectorAll("audio");
-console.log($song);
+// console.log($song);
 
 $song.forEach((reproducciendo) => {
   reproducciendo.addEventListener("play", (e) => {
     let reproducciendoActual = e.target;
     console.log("Reproduciendo");
-    console.log(e);
-
     $rango.max = reproducciendoActual.duration;
-    $rango.addEventListener("click", (e) => {
-        // $rango.value = e.target.valueAsNumber;
-        reproducciendoActual.currentTime = e.target.valueAsNumber;
-        $rango.setAttribute("value", `${e.target.currentTime}`);
-        // console.log(e.target)
-        // console.log(reproducciendoActual.currentTime)
-        });
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
     let segundos = Math.floor(reproducciendoActual.duration % 60);
     let minutosText = minutos.toString();
     let segundosText = segundos.toString();
 
-    console.log(minutos, segundos);
+    // console.log(minutos, segundos);
 
     if (minutosText.length < 2) {
       minutosText = `0${minutos}`;
@@ -108,12 +102,13 @@ $song.forEach((reproducciendo) => {
     console.log("Detenido");
     let cancionAnterior = e.target;
     cancionAnterior.currentTime = 0;
-    $rango.value = 0;
+    // $rango.value = 0;
+    
   });
 
   reproducciendo.addEventListener("timeupdate", (e) => {
+    // $rango.value = e.target.currentTime;
     $rango.setAttribute("value", `${e.target.currentTime}`);
-    $rango.value = e.target.currentTime;
-    console.log(e.target.currentTime)
+    // console.log(e.target.currentTime)
   });
 });
