@@ -23,7 +23,7 @@ span {
     color: #52FF00;
 }
 
-input[type=range] {
+/* input[type=range] {
     height: 0px;
     -webkit-appearance: none;
     margin: 0;
@@ -50,7 +50,6 @@ input[type=range] {
     background: #00880b;
     cursor: pointer;
     -webkit-appearance: none;
-    /* margin-top: -0px; */
   }
   input[type=range]:focus::-webkit-slider-runnable-track {
     background: #205928;
@@ -111,7 +110,7 @@ input[type=range] {
   input[type=range]:focus::-ms-fill-upper {
     background: #205928;
   }
-  
+   */
   
 
 
