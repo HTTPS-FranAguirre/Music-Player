@@ -50,12 +50,17 @@ $song.forEach((reproducciendo) => {
   reproducciendo.addEventListener("play", (e) => {
     let reproducciendoActual = e.target;
     console.log("Reproduciendo");
-    $rango.max = reproducciendoActual.duration;
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
     let segundos = Math.floor(reproducciendoActual.duration % 60);
     let minutosText = minutos.toString();
     let segundosText = segundos.toString();
+
+        // Manejo control de rango
+        $rango.max = reproducciendoActual.duration;
+        $rango.addEventListener("touchstart", (e) => {
+          reproducciendoActual.currentTime = e.target.value;
+        })
 
     // console.log(minutos, segundos);
 
@@ -102,18 +107,11 @@ $song.forEach((reproducciendo) => {
 
   reproducciendo.addEventListener("timeupdate", (e) => {
     // $rango.value = e.target.currentTime;
-    $rango.setAttribute("value", `${e.target.currentTime}`);
+    // $rango.setAttribute("value", `${e.target.currentTime}`);
     // console.log(e.target.currentTime)
   });
 });
 
-$rango.addEventListener("click", (e) => {
-  console.log(e.target.value);
-  $rango.setAttribute("value", `${e.target.value}`);
-
-  $song.forEach(element => {
-    if (element.play){
-      element.currentTime = $rango.value
-    }
-  });
-})
+// $rango.addEventListener("touchstart", (e) => {
+//   console.log(e.target.value);
+// })
