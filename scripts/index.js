@@ -56,10 +56,11 @@ $song.forEach((reproducciendo) => {
 
     $rango.max = reproducciendoActual.duration;
     $rango.addEventListener("click", (e) => {
-        $rango.value = e.target.valueAsNumber;
+        // $rango.value = e.target.valueAsNumber;
         reproducciendoActual.currentTime = e.target.valueAsNumber;
-        console.log(e.target)
-        console.log(reproducciendoActual.currentTime)
+        $rango.setAttribute("value", `${e.target.currentTime}`);
+        // console.log(e.target)
+        // console.log(reproducciendoActual.currentTime)
         });
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
@@ -107,10 +108,12 @@ $song.forEach((reproducciendo) => {
     console.log("Detenido");
     let cancionAnterior = e.target;
     cancionAnterior.currentTime = 0;
+    $rango.value = 0;
   });
 
   reproducciendo.addEventListener("timeupdate", (e) => {
     // $rango.value = e.target.currentTime;
     $rango.setAttribute("value", `${e.target.currentTime}`);
+    console.log(e.target.currentTime)
   });
 });
