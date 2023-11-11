@@ -112,6 +112,5 @@ $song.forEach((reproducciendo) => {
   reproducciendo.addEventListener("timeupdate", (e) => {
     // $rango.value = e.target.currentTime;
     $rango.setAttribute("value", `${e.target.currentTime}`);
-    console.log($rango.value)
   });
 });
