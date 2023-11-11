@@ -196,6 +196,11 @@ input[type=range] {
 .head__icon:hover {
   cursor: pointer;
   border: 3px solid green;
+  background-color: #00000065;
+}
+
+.head__icon:hover svg {
+  fill: #236e00;
 }
 
 svg {
