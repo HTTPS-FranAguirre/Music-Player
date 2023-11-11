@@ -39,11 +39,6 @@ $playlist.addEventListener("click", (e) => {
       $playlistSong[index].style.backgroundColor = "";
       musica.pause();
     }
-    $rango.addEventListener("click", (e) => {
-      console.log(e.target.value);
-      musica.currentTime = e.target.value;
-      console.log(musica.currentTime);
-    })
   });
 });
 
@@ -102,7 +97,6 @@ $song.forEach((reproducciendo) => {
     console.log("Detenido");
     let cancionAnterior = e.target;
     cancionAnterior.currentTime = 0;
-    // $rango.value = 0;
     
   });
 
@@ -112,3 +106,14 @@ $song.forEach((reproducciendo) => {
     // console.log(e.target.currentTime)
   });
 });
+
+$rango.addEventListener("click", (e) => {
+  console.log(e.target.value);
+  $rango.setAttribute("value", `${e.target.value}`);
+
+  $song.forEach(element => {
+    if (element.play){
+      element.currentTime = $rango.value
+    }
+  });
+})
