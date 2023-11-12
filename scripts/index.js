@@ -58,9 +58,21 @@ $song.forEach((reproducciendo) => {
 
         // Manejo control de rango
         $rango.max = reproducciendoActual.duration;
-        $rango.addEventListener("touchstart", (e) => {
-          reproducciendoActual.currentTime = e.target.value;
+        $rango.addEventListener("touchend", (e) => {
+          // console.log(e);
+          reproducciendoActual.currentTime = e.target.valueAsNumber;
+          reproducciendoActual.currentTime === $rango.value;
+          // codigo de abajo obtiene el valor actual de la cancion, no el valor del click
+          // console.log(e.target.attributes.value.value);
+          //Este codigo de abajo obtiene el valor pero del click anterior (Esto era porque usaba el touchstart y no el touchend)
+          console.log(e.target.valueAsNumber);
         })
+
+        $rango.addEventListener("click", (e) => {
+          reproducciendoActual.currentTime = e.target.valueAsNumber;
+          reproducciendoActual.currentTime === $rango.value;
+        })
+
 
     // console.log(minutos, segundos);
 
@@ -102,13 +114,14 @@ $song.forEach((reproducciendo) => {
     console.log("Detenido");
     let cancionAnterior = e.target;
     cancionAnterior.currentTime = 0;
-    
+    $rango.value = 0;
   });
 
   reproducciendo.addEventListener("timeupdate", (e) => {
+    $rango.setAttribute("value", `${e.target.currentTime}`);
     // $rango.value = e.target.currentTime;
-    // $rango.setAttribute("value", `${e.target.currentTime}`);
-    // console.log(e.target.currentTime)
+    $rango.value = e.target.currentTime
+    // console.log(e.target.currentTime);
   });
 });
 
