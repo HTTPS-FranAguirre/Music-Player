@@ -23,7 +23,7 @@ span {
     color: #52FF00;
 }
 
-/* input[type=range] {
+input[type=range] {
     height: 0px;
     -webkit-appearance: none;
     margin: 0;
@@ -110,7 +110,7 @@ span {
   input[type=range]:focus::-ms-fill-upper {
     background: #205928;
   }
-   */
+  
   
 
 
