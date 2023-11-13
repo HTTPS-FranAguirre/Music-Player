@@ -21,11 +21,13 @@ const $headSongDurationBar = d.querySelector(
 const $rango = d.querySelector(".rango");
 
 //Control de botones
+const $buttonBackward = d.querySelector(".button-backward");
 const $buttonPlay = d.querySelector(".button-play");
 const $buttonPause = d.querySelector(".button-pause");
 const $buttonStop = d.querySelector(".button-stop");
+const $buttonForward = d.querySelector(".button-forward");
 
-console.log ($buttonPlay)
+console.log ($buttonBackward)
 
 // $buttonPlay.addEventListener("click", (e) => {
 //   $playlistSong.forEach(dd =>  {
@@ -60,6 +62,25 @@ $buttonStop.addEventListener("click", (e) => {
     if (bb.classList.contains("cancionActual")){
       let audio = bb.querySelector("audio");
       audio.currentTime = 0;
+    }
+  })
+})
+
+$buttonForward.addEventListener("click", (e) => {
+  $playlistSong.forEach(nn => {
+    console.log("***************");
+    if (nn.classList.contains("cancionActual")){
+      let musica = nn.querySelector("audio");
+      musica.pause();
+      musica.currentTime = 0;
+      nn.nextElementSibling.classList.add("next");
+    };
+    if (nn.classList.contains("next")){
+      nn.previousElementSibling.classList.remove("cancionActual");
+      nn.classList.add("cancionActual");
+      let musica = nn.querySelector("audio");
+      musica.play();
+      nn.classList.remove("next");  
     }
   })
 })
