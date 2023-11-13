@@ -110,8 +110,6 @@ input[type=range] {
   input[type=range]:focus::-ms-fill-upper {
     background: #205928;
   }
-  
-  
 
 
 
@@ -260,4 +258,8 @@ svg {
 
 .active__name {
     color: #ffffff;
+}
+
+.cancionActual {
+  background-color: green;
 }

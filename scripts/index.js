@@ -20,6 +20,52 @@ const $headSongDurationBar = d.querySelector(
 
 const $rango = d.querySelector(".rango");
 
+//Control de botones
+const $buttonPlay = d.querySelector(".button-play");
+const $buttonPause = d.querySelector(".button-pause");
+const $buttonStop = d.querySelector(".button-stop");
+
+console.log ($buttonPlay)
+
+// $buttonPlay.addEventListener("click", (e) => {
+//   $playlistSong.forEach(dd =>  {
+//     // console.log(dd.classList.contains("cancionActual"));
+//     if (dd.classList.contains("cancionActual")){
+//       let audio = dd.querySelector("audio");
+//       audio.play();
+//     }
+//   })
+// })
+
+$buttonPlay.addEventListener("click", (e) => {
+  $playlistSong.forEach(ff => {
+    if (ff.classList.contains("cancionActual")){
+        let audio = ff.querySelector("audio");
+        audio.play();
+    }
+  })
+})
+
+$buttonPause.addEventListener("click", (e) => {
+  $playlistSong.forEach(ff => {
+    if (ff.classList.contains("cancionActual")){
+        let audio = ff.querySelector("audio");
+        audio.pause();
+    }
+  })
+})
+
+$buttonStop.addEventListener("click", (e) => {
+  $playlistSong.forEach(bb => {
+    if (bb.classList.contains("cancionActual")){
+      let audio = bb.querySelector("audio");
+      audio.currentTime = 0;
+    }
+  })
+})
+
+
+
 /* Creacion dinamica de src en etiquetas "audio" */
 $playlistSong.forEach((recorrido) => {
   const texto = recorrido.firstElementChild.textContent;
@@ -33,11 +79,12 @@ $playlist.addEventListener("click", (e) => {
   $playlistSongName.forEach(function callback(currentValue, index) {
     let musica = $playlistSong[index].querySelector("audio");
     if (e.target === currentValue) {
-      $playlistSong[index].style.backgroundColor = "green";
+      $playlistSong[index].classList.add("cancionActual");
       musica.play();
     } else {
-      $playlistSong[index].style.backgroundColor = "";
+      $playlistSong[index].classList.remove("cancionActual");
       musica.pause();
+      musica.currentTime = 0;
     }
   });
 });
@@ -58,23 +105,16 @@ $song.forEach((reproducciendo) => {
 
         // Manejo control de rango
         $rango.max = reproducciendoActual.duration;
+
         $rango.addEventListener("touchend", (e) => {
-          // console.log(e);
           reproducciendoActual.currentTime = e.target.valueAsNumber;
           reproducciendoActual.currentTime === $rango.value;
-          // codigo de abajo obtiene el valor actual de la cancion, no el valor del click
-          // console.log(e.target.attributes.value.value);
-          //Este codigo de abajo obtiene el valor pero del click anterior (Esto era porque usaba el touchstart y no el touchend)
-          console.log(e.target.valueAsNumber);
         })
 
         $rango.addEventListener("click", (e) => {
           reproducciendoActual.currentTime = e.target.valueAsNumber;
           reproducciendoActual.currentTime === $rango.value;
         })
-
-
-    // console.log(minutos, segundos);
 
     if (minutosText.length < 2) {
       minutosText = `0${minutos}`;
@@ -90,7 +130,6 @@ $song.forEach((reproducciendo) => {
       if (!reproducciendoActual.currentTime) {
         clearInterval(descartes);
       }
-      // console.log(e.target.currentTime)
 
       let minutos = Math.floor(reproducciendoActual.currentTime / 60);
       let segundos = Math.floor(reproducciendoActual.currentTime % 60);
@@ -111,20 +150,20 @@ $song.forEach((reproducciendo) => {
     }, 1000);
   });
   reproducciendo.addEventListener("pause", (e) => {
-    console.log("Detenido");
-    let cancionAnterior = e.target;
-    cancionAnterior.currentTime = 0;
-    $rango.value = 0;
+    console.log("Pausado");
+
+      // reproducciendo.currentTime = 0;
+      // $rango.value = 0;
+    console.log("************");
+    // console.log(reproducciendo);
+    console.log(reproducciendo.currentTime);
+    // console.log(reproducciendo.classList.contains("cancionActual"));
+    // cancionAnterior.currentTime = 0;
+    // $rango.value = 0;
   });
 
   reproducciendo.addEventListener("timeupdate", (e) => {
     $rango.setAttribute("value", `${e.target.currentTime}`);
-    // $rango.value = e.target.currentTime;
     $rango.value = e.target.currentTime
-    // console.log(e.target.currentTime);
   });
 });
-
-// $rango.addEventListener("touchstart", (e) => {
-//   console.log(e.target.value);
-// })
