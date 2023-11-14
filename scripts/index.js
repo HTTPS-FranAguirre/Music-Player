@@ -139,7 +139,7 @@ $playlist.addEventListener("click", (e) => {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
-  let numero = getRandomInt(1, 16);
+  let numero = getRandomInt(1, 21);
   $headArtistPhoto.src = `./images/${numero}.jpg`;
   $playlistSongName.forEach(function callback(currentValue, index) {
     let musica = $playlistSong[index].querySelector("audio");
