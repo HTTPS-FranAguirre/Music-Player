@@ -11,7 +11,7 @@ body {
 }
 
 p {
-    margin: 0;
+    margin: 16px;
     font-family: 'IBM Plex Mono', monospace;
     cursor: pointer;
     width: 100%;
@@ -114,19 +114,21 @@ input[type=range] {
 
 
 .head {
-    width: 320px;
-    max-height: 160px;
+    width: 100vw;
+    max-width: 500px;
     height: 25vh;
     border-radius: 10px;
     display: flex;
+    justify-content: space-evenly;
     background-image: url("images/head-background-image.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 /* head__container-left */
 
 .head__container-left {
-    width: 96px;
-    height: 160px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -150,8 +152,6 @@ input[type=range] {
 /* head__container-right */
 
 .head__container-right {
-    width: 224px;
-    height: 160px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -218,11 +218,15 @@ svg {
 
 /* playlist */
 .playlist {
-    width: 320px;
-    max-height: 756px;
+    width: 100vw;
+    max-width: 500px;
     height: 75vh;
     overflow: auto;
     background-image: url("images/playlist-background-image.png");
+    background-repeat: no-repeat;
+    background-position: 50% 25%;
+    background-size: cover;
+    border-radius: 10px;
 }
 
 /* playlist scrollbar */
@@ -236,16 +240,13 @@ svg {
     border-radius: 10px; /* redondear los border del scroll */
   }
   .playlist::-webkit-scrollbar {
-    width: 29px; /*ancho del scroll vertical*/
+    width: 40px; /*ancho del scroll vertical*/
     height: 16px; /*alto del scroll horizontal*/
   }
 
 .playlist__song-container {
-    width: 289px;
-    height: 32px;
     border-radius: 10px;
     display: flex;
-    align-items: center;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.50) 100%);
     cursor: pointer;
 }

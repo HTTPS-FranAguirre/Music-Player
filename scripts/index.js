@@ -27,8 +27,6 @@ const $buttonPause = d.querySelector(".button-pause");
 const $buttonStop = d.querySelector(".button-stop");
 const $buttonForward = d.querySelector(".button-forward");
 
-console.log ($buttonBackward)
-
 $buttonBackward.addEventListener("click", (e) => {
   $playlistSong.forEach(nn => {
     if (nn.classList.contains("cancionActual")){
@@ -44,6 +42,8 @@ $buttonBackward.addEventListener("click", (e) => {
       nn.classList.add("cancionActual");
       let musica = nn.querySelector("audio");
       musica.play();
+      let cancion = nn.querySelector("p");
+      $artistSongTitle.textContent = cancion.textContent;
       nn.classList.remove("back");  
     }
   })
@@ -100,7 +100,6 @@ $buttonStop.addEventListener("click", (e) => {
 
 $buttonForward.addEventListener("click", (e) => {
   $playlistSong.forEach(nn => {
-    console.log("***************");
     if (nn.classList.contains("cancionActual")){
       let musica = nn.querySelector("audio");
       musica.pause();
@@ -112,6 +111,8 @@ $buttonForward.addEventListener("click", (e) => {
       nn.classList.add("cancionActual");
       let musica = nn.querySelector("audio");
       musica.play();
+      let cancion = nn.querySelector("p");
+      $artistSongTitle.textContent = cancion.textContent;
       nn.classList.remove("next");  
     }
   })
@@ -149,7 +150,6 @@ const $song = d.querySelectorAll("audio");
 $song.forEach((reproducciendo) => {
   reproducciendo.addEventListener("play", (e) => {
     let reproducciendoActual = e.target;
-    console.log("Reproduciendo");
 
     let minutos = Math.floor(reproducciendoActual.duration / 60);
     let segundos = Math.floor(reproducciendoActual.duration % 60);
@@ -201,18 +201,6 @@ $song.forEach((reproducciendo) => {
 
       $headCurrentSongTimeReal.textContent = tiempoActual;
     }, 1000);
-  });
-  reproducciendo.addEventListener("pause", (e) => {
-    console.log("Pausado");
-
-      // reproducciendo.currentTime = 0;
-      // $rango.value = 0;
-    console.log("************");
-    // console.log(reproducciendo);
-    console.log(reproducciendo.currentTime);
-    // console.log(reproducciendo.classList.contains("cancionActual"));
-    // cancionAnterior.currentTime = 0;
-    // $rango.value = 0;
   });
 
   reproducciendo.addEventListener("timeupdate", (e) => {
