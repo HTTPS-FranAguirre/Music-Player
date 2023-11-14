@@ -11,7 +11,8 @@ body {
 }
 
 p {
-    margin: 16px;
+    padding: 16px;
+    margin: 0;
     font-family: 'IBM Plex Mono', monospace;
     cursor: pointer;
     width: 100%;
@@ -149,7 +150,7 @@ input[type=range] {
     width: 90%;
     display: flex;
     justify-content: space-evenly;
-    height: 50px;
+    height: 10vw;
     border-radius: 10px;
     border: 1px solid black;
 }
