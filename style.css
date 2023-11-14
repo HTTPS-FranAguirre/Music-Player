@@ -26,6 +26,8 @@ span {
 
 img {
   border-radius: 10px;
+  width: 80px;
+  height: 80px;
 }
 
 input[type=range] {
@@ -143,14 +145,14 @@ input[type=range] {
 
 .head__artist-photo {
     width: 80px;
-    height: 80px;
+    height: 55%;
 }
 
 .head__current-song-time {
     width: 90%;
     display: flex;
     justify-content: space-evenly;
-    height: 10vw;
+    height: 25%;
     border-radius: 10px;
     border: 1px solid black;
 }

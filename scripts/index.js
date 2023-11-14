@@ -1,5 +1,7 @@
 const d = document;
 
+const $headArtistPhoto = d.querySelector(".head__artist-photo img");
+
 const $headCurrentSongTimeReal = d.querySelector(
   ".head__current-song-time span:first-child"
 );
@@ -130,6 +132,15 @@ $playlistSong.forEach((recorrido) => {
 /* Reproductor de musica actual */
 $playlist.addEventListener("click", (e) => {
   $artistSongTitle.textContent = e.target.textContent;
+
+  //Img random
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  let numero = getRandomInt(1, 16);
+  $headArtistPhoto.src = `./images/${numero}.jpg`;
   $playlistSongName.forEach(function callback(currentValue, index) {
     let musica = $playlistSong[index].querySelector("audio");
     if (e.target === currentValue) {
