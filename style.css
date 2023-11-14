@@ -23,6 +23,10 @@ span {
     color: #52FF00;
 }
 
+img {
+  border-radius: 10px;
+}
+
 input[type=range] {
     height: 0px;
     -webkit-appearance: none;
@@ -137,17 +141,15 @@ input[type=range] {
 }
 
 .head__artist-photo {
-    width: 72px;
-    height: 72px;
-    border-radius: 10px;
-    border: 1px solid black;
+    width: 80px;
+    height: 80px;
 }
 
 .head__current-song-time {
     width: 90%;
     display: flex;
     justify-content: space-evenly;
-    height: 54px;
+    height: 50px;
     border-radius: 10px;
     border: 1px solid black;
 }
