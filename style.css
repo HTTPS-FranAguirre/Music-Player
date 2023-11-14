@@ -130,6 +130,7 @@ input[type=range] {
 
 .head__container-left {
     display: flex;
+    width: 30%;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -153,28 +154,29 @@ input[type=range] {
 
 .head__container-right {
     display: flex;
+    width: 70%;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
 .head__artist-song-title {
-    width: 200px;
-    height: 20px;
+    width: 90%;
+    height: 25px;
     border-radius: 10px;
-    border: 1px solid black;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.50) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.90) 0%, rgba(0, 0, 0, 0.10) 100%);
 }
 
-.head__artist-song-title > p {
-    color: #52FF00;
-    font-size: 14px;
+.head__artist-song-title > marquee > p {
+  margin: 0;
+    color: #ff2600;
+    font-size: 16px;
     text-wrap: nowrap;
     overflow-x: hidden;
 }
 
 .head__song-control {
-    width: 209px;
+    width: 85%;
     height: 37px;
     border-radius: 10px;
     display: flex;
@@ -205,7 +207,7 @@ svg {
 }
 
 .head__song-duration-bar {
-    width: 200px;
+    width: 90%;
     height: 16px;
     border-radius: 20px 0 20px 0;
     border: 1px solid black;
