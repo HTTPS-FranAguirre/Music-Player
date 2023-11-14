@@ -144,7 +144,9 @@ input[type=range] {
 }
 
 .head__current-song-time {
-    width: 80px;
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
     height: 54px;
     border-radius: 10px;
     border: 1px solid black;
