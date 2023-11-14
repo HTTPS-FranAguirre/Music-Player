@@ -29,47 +29,47 @@ const $buttonForward = d.querySelector(".button-forward");
 
 console.log ($buttonBackward)
 
-/* $buttonBackward.addEventListener("click", (e) => {
-  $playlistSong.forEach(nn => {
-    console.log("***************");
-    if (nn.classList.contains("cancionActual")){
-      nn.previousElementSibling.classList.add("back");
-      if (nn.previousElementSibling.classList.contains("back")){
-        nn.previousElementSibling.classList.add("cancionActual");
-        nn.classList.remove("cancionActual");
-        nn.previousElementSibling.classList.remove("back");
-      }
-    }
-    // if (nn.classList.contains("back")){
-    //   nn.nextElementSibling.classList.remove("cancionActual");
-    //   nn.classList.add("cancionActual");
-    //   nn.previousElementSibling.classList.add("back");
-    //   nn.classList.remove("back");  
-    // }
-  })
-}) */
-
 $buttonBackward.addEventListener("click", (e) => {
   $playlistSong.forEach(nn => {
-    console.log("***************");
     if (nn.classList.contains("cancionActual")){
       let musica = nn.querySelector("audio");
       musica.pause();
       musica.currentTime = 0;
       nn.previousElementSibling.classList.add("back");
-    };
-
-    setTimeout(() => {
-      if (nn.classList.contains("back")){
-        nn.nextElementSibling.classList.remove("cancionActual");
-        nn.classList.add("cancionActual");
-        let musica = nn.querySelector("audio");
-        musica.play();
-        nn.classList.remove("back");  
-      }
-    }, 250);
+    }
+  })
+  $playlistSong.forEach(nn => {
+    if (nn.classList.contains("back")){
+      nn.nextElementSibling.classList.remove("cancionActual");
+      nn.classList.add("cancionActual");
+      let musica = nn.querySelector("audio");
+      musica.play();
+      nn.classList.remove("back");  
+    }
   })
 })
+
+// $buttonBackward.addEventListener("click", (e) => {
+//   $playlistSong.forEach(nn => {
+//     console.log("***************");
+//     if (nn.classList.contains("cancionActual")){
+//       let musica = nn.querySelector("audio");
+//       musica.pause();
+//       musica.currentTime = 0;
+//       nn.previousElementSibling.classList.add("back");
+//     };
+
+//     setTimeout(() => {
+//       if (nn.classList.contains("back")){
+//         nn.nextElementSibling.classList.remove("cancionActual");
+//         nn.classList.add("cancionActual");
+//         let musica = nn.querySelector("audio");
+//         musica.play();
+//         nn.classList.remove("back");  
+//       }
+//     }, 100);
+//   })
+// })
 
 $buttonPlay.addEventListener("click", (e) => {
   $playlistSong.forEach(ff => {
