@@ -22,6 +22,14 @@ const $headSongDurationBar = d.querySelector(
 
 const $rango = d.querySelector(".rango");
 
+/* Creacion dinamica de src en etiquetas "audio" */
+$playlistSong.forEach((recorrido) => {
+  const texto = recorrido.firstElementChild.textContent;
+  const musiquita = recorrido.lastElementChild;
+  musiquita.setAttribute("src", `./songs/${texto}.mp3`);
+  musiquita.setAttribute("rel", "preload");
+});
+
 //Control de botones
 const $buttonBackward = d.querySelector(".button-backward");
 const $buttonPlay = d.querySelector(".button-play");
@@ -122,15 +130,6 @@ $buttonForward.addEventListener("click", (e) => {
   })
 })
 
-
-
-/* Creacion dinamica de src en etiquetas "audio" */
-$playlistSong.forEach((recorrido) => {
-  const texto = recorrido.firstElementChild.textContent;
-  const musiquita = recorrido.lastElementChild;
-  musiquita.setAttribute("src", `./songs/${texto}.mp3`);
-});
-
 /* Reproductor de musica actual */
 $playlist.addEventListener("click", (e) => {
   $artistSongTitle.textContent = e.target.textContent;
@@ -160,12 +159,12 @@ $playlist.addEventListener("click", (e) => {
 
 /* Duración de la canción y tiempo actual */
 const $song = d.querySelectorAll("audio");
-// console.log($song);
 
 $song.forEach((reproducciendo) => {
+  // console.log(reproducciendo)
   reproducciendo.addEventListener("play", (e) => {
     let reproducciendoActual = e.target;
-
+    console.log(reproducciendoActual);
     let minutos = Math.floor(reproducciendoActual.duration / 60);
     let segundos = Math.floor(reproducciendoActual.duration % 60);
     let minutosText = minutos.toString();
