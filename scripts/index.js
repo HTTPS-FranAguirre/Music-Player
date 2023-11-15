@@ -43,6 +43,7 @@ $buttonBackward.addEventListener("click", (e) => {
       nn.nextElementSibling.classList.remove("cancionActual");
       nn.classList.add("cancionActual");
       let musica = nn.querySelector("audio");
+      musica.currentTime = 0;
       musica.play();
       let cancion = nn.querySelector("p");
       $artistSongTitle.textContent = cancion.textContent;
@@ -112,6 +113,7 @@ $buttonForward.addEventListener("click", (e) => {
       nn.previousElementSibling.classList.remove("cancionActual");
       nn.classList.add("cancionActual");
       let musica = nn.querySelector("audio");
+      musica.currentTime = 0;
       musica.play();
       let cancion = nn.querySelector("p");
       $artistSongTitle.textContent = cancion.textContent;
@@ -133,7 +135,19 @@ $playlistSong.forEach((recorrido) => {
 $playlist.addEventListener("click", (e) => {
   $artistSongTitle.textContent = e.target.textContent;
 
-  //Img random
+  $playlistSongName.forEach(function callback(currentValue, index) {
+    let musica = $playlistSong[index].querySelector("audio");
+    if (e.target === currentValue) {
+      $playlistSong[index].classList.add("cancionActual");
+      musica.currentTime = 0;
+      musica.play();
+    } else {
+      $playlistSong[index].classList.remove("cancionActual");
+      musica.pause();
+      musica.currentTime = 0;
+    }
+
+      //Img random
   function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -141,16 +155,6 @@ $playlist.addEventListener("click", (e) => {
   }
   let numero = getRandomInt(1, 21);
   $headArtistPhoto.src = `./images/${numero}.jpg`;
-  $playlistSongName.forEach(function callback(currentValue, index) {
-    let musica = $playlistSong[index].querySelector("audio");
-    if (e.target === currentValue) {
-      $playlistSong[index].classList.add("cancionActual");
-      musica.play();
-    } else {
-      $playlistSong[index].classList.remove("cancionActual");
-      musica.pause();
-      musica.currentTime = 0;
-    }
   });
 });
 
