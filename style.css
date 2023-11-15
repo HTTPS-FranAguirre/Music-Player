@@ -3,6 +3,7 @@
 }
 
 body {
+    background-color: #161616;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -26,8 +27,8 @@ span {
 
 img {
   border-radius: 10px;
-  width: 80px;
-  height: 80px;
+  width: 105px;
+  height: 105px;
 }
 
 input[type=range] {
@@ -124,6 +125,7 @@ input[type=range] {
     width: 100vw;
     max-width: 500px;
     height: 25vh;
+    max-height: 195px;
     border-radius: 10px;
     display: flex;
     justify-content: space-evenly;
@@ -141,11 +143,6 @@ input[type=range] {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-}
-
-.head__artist-photo {
-    width: 80px;
-    height: 55%;
 }
 
 .head__current-song-time {
@@ -180,7 +177,6 @@ input[type=range] {
     color: #ff2600;
     font-size: 16px;
     text-wrap: nowrap;
-    overflow-x: hidden;
 }
 
 .head__song-control {
@@ -231,6 +227,7 @@ svg {
     width: 100vw;
     max-width: 500px;
     height: 75vh;
+    max-height: 1000px;
     overflow: auto;
     background-image: url("images/playlist-background-image.png");
     background-repeat: no-repeat;
