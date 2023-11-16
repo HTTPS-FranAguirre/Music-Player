@@ -198,18 +198,14 @@ $song.forEach((reproducciendo) => {
         clearInterval(v);
       }
     }, 1000);
+  });
 
-    // if (Number.isNaN(reproducciendoActual.duration) === true){
-
-    // }
-
-    let descartes = setInterval(() => {
-      if (!reproducciendoActual.currentTime) {
-        clearInterval(descartes);
-      }
-
-      let minutos = Math.floor(reproducciendoActual.currentTime / 60);
-      let segundos = Math.floor(reproducciendoActual.currentTime % 60);
+  reproducciendo.addEventListener("timeupdate", (e) => {
+    let tiempo = e.target.currentTime;
+    $rango.setAttribute("value", `${tiempo}`);
+    $rango.value = tiempo;
+    let minutos = Math.floor(tiempo / 60);
+      let segundos = Math.floor(tiempo % 60);
       let minutosLength = minutos.toString();
       let segundosLength = segundos.toString();
 
@@ -224,11 +220,5 @@ $song.forEach((reproducciendo) => {
       let tiempoActual = `${minutosLength}:${segundosLength}`;
 
       $headCurrentSongTimeReal.textContent = tiempoActual;
-    }, 1000);
-  });
-
-  reproducciendo.addEventListener("timeupdate", (e) => {
-    $rango.setAttribute("value", `${e.target.currentTime}`);
-    $rango.value = e.target.currentTime;
   });
 });
