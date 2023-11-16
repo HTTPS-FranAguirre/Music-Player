@@ -38,16 +38,16 @@ const $buttonStop = d.querySelector(".button-stop");
 const $buttonForward = d.querySelector(".button-forward");
 
 $buttonBackward.addEventListener("click", (e) => {
-  $playlistSong.forEach(nn => {
-    if (nn.classList.contains("cancionActual")){
+  $playlistSong.forEach((nn) => {
+    if (nn.classList.contains("cancionActual")) {
       let musica = nn.querySelector("audio");
       musica.pause();
       musica.currentTime = 0;
       nn.previousElementSibling.classList.add("back");
     }
-  })
-  $playlistSong.forEach(nn => {
-    if (nn.classList.contains("back")){
+  });
+  $playlistSong.forEach((nn) => {
+    if (nn.classList.contains("back")) {
       nn.nextElementSibling.classList.remove("cancionActual");
       nn.classList.add("cancionActual");
       let musica = nn.querySelector("audio");
@@ -55,10 +55,10 @@ $buttonBackward.addEventListener("click", (e) => {
       musica.play();
       let cancion = nn.querySelector("p");
       $artistSongTitle.textContent = cancion.textContent;
-      nn.classList.remove("back");  
+      nn.classList.remove("back");
     }
-  })
-})
+  });
+});
 
 // $buttonBackward.addEventListener("click", (e) => {
 //   $playlistSong.forEach(nn => {
@@ -76,48 +76,48 @@ $buttonBackward.addEventListener("click", (e) => {
 //         nn.classList.add("cancionActual");
 //         let musica = nn.querySelector("audio");
 //         musica.play();
-//         nn.classList.remove("back");  
+//         nn.classList.remove("back");
 //       }
 //     }, 100);
 //   })
 // })
 
 $buttonPlay.addEventListener("click", (e) => {
-  $playlistSong.forEach(ff => {
-    if (ff.classList.contains("cancionActual")){
-        let audio = ff.querySelector("audio");
-        audio.play();
+  $playlistSong.forEach((ff) => {
+    if (ff.classList.contains("cancionActual")) {
+      let audio = ff.querySelector("audio");
+      audio.play();
     }
-  })
-})
+  });
+});
 
 $buttonPause.addEventListener("click", (e) => {
-  $playlistSong.forEach(ff => {
-    if (ff.classList.contains("cancionActual")){
-        let audio = ff.querySelector("audio");
-        audio.pause();
+  $playlistSong.forEach((ff) => {
+    if (ff.classList.contains("cancionActual")) {
+      let audio = ff.querySelector("audio");
+      audio.pause();
     }
-  })
-})
+  });
+});
 
 $buttonStop.addEventListener("click", (e) => {
-  $playlistSong.forEach(bb => {
-    if (bb.classList.contains("cancionActual")){
+  $playlistSong.forEach((bb) => {
+    if (bb.classList.contains("cancionActual")) {
       let audio = bb.querySelector("audio");
       audio.currentTime = 0;
     }
-  })
-})
+  });
+});
 
 $buttonForward.addEventListener("click", (e) => {
-  $playlistSong.forEach(nn => {
-    if (nn.classList.contains("cancionActual")){
+  $playlistSong.forEach((nn) => {
+    if (nn.classList.contains("cancionActual")) {
       let musica = nn.querySelector("audio");
       musica.pause();
       musica.currentTime = 0;
       nn.nextElementSibling.classList.add("next");
-    };
-    if (nn.classList.contains("next")){
+    }
+    if (nn.classList.contains("next")) {
       nn.previousElementSibling.classList.remove("cancionActual");
       nn.classList.add("cancionActual");
       let musica = nn.querySelector("audio");
@@ -125,10 +125,10 @@ $buttonForward.addEventListener("click", (e) => {
       musica.play();
       let cancion = nn.querySelector("p");
       $artistSongTitle.textContent = cancion.textContent;
-      nn.classList.remove("next");  
+      nn.classList.remove("next");
     }
-  })
-})
+  });
+});
 
 /* Reproductor de musica actual */
 $playlist.addEventListener("click", (e) => {
@@ -146,14 +146,14 @@ $playlist.addEventListener("click", (e) => {
       musica.currentTime = 0;
     }
 
-      //Img random
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  }
-  let numero = getRandomInt(1, 21);
-  $headArtistPhoto.src = `./images/${numero}.jpg`;
+    //Img random
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+    let numero = getRandomInt(1, 21);
+    $headArtistPhoto.src = `./images/${numero}.jpg`;
   });
 });
 
@@ -161,37 +161,47 @@ $playlist.addEventListener("click", (e) => {
 const $song = d.querySelectorAll("audio");
 
 $song.forEach((reproducciendo) => {
-  // console.log(reproducciendo)
   reproducciendo.addEventListener("play", (e) => {
     let reproducciendoActual = e.target;
-    console.log(reproducciendoActual);
-    let minutos = Math.floor(reproducciendoActual.duration / 60);
-    let segundos = Math.floor(reproducciendoActual.duration % 60);
-    let minutosText = minutos.toString();
-    let segundosText = segundos.toString();
+    // console.log(Number.isNaN(reproducciendoActual.duration));
 
-        // Manejo control de rango
-        $rango.max = reproducciendoActual.duration;
+    // Manejo control de rango
+    $rango.max = reproducciendoActual.duration;
 
-        $rango.addEventListener("touchend", (e) => {
-          reproducciendoActual.currentTime = e.target.valueAsNumber;
-          reproducciendoActual.currentTime === $rango.value;
-        })
+    $rango.addEventListener("touchend", (e) => {
+      reproducciendoActual.currentTime = e.target.valueAsNumber;
+      reproducciendoActual.currentTime === $rango.value;
+    });
 
-        $rango.addEventListener("click", (e) => {
-          reproducciendoActual.currentTime = e.target.valueAsNumber;
-          reproducciendoActual.currentTime === $rango.value;
-        })
+    $rango.addEventListener("click", (e) => {
+      reproducciendoActual.currentTime = e.target.valueAsNumber;
+      reproducciendoActual.currentTime === $rango.value;
+    });
 
-    if (minutosText.length < 2) {
-      minutosText = `0${minutos}`;
-    }
-    if (segundosText.length < 2) {
-      segundosText = `0${segundos}`;
-    }
+    let v = setInterval(() => {
+      if (!Number.isNaN(reproducciendoActual.duration) === true) {
+        let minutos = Math.floor(reproducciendoActual.duration / 60);
+        let segundos = Math.floor(reproducciendoActual.duration % 60);
+        let minutosText = minutos.toString();
+        let segundosText = segundos.toString();
 
-    let duracionTotal = `${minutosText}:${segundosText}`;
-    $headCurrentSongTime.textContent = duracionTotal;
+        if (minutosText.length < 2) {
+          minutosText = `0${minutos}`;
+        }
+        if (segundosText.length < 2) {
+          segundosText = `0${segundos}`;
+        }
+
+        let duracionTotal = `${minutosText}:${segundosText}`;
+        $headCurrentSongTime.textContent = duracionTotal;
+
+        clearInterval(v);
+      }
+    }, 1000);
+
+    // if (Number.isNaN(reproducciendoActual.duration) === true){
+
+    // }
 
     let descartes = setInterval(() => {
       if (!reproducciendoActual.currentTime) {
@@ -219,6 +229,6 @@ $song.forEach((reproducciendo) => {
 
   reproducciendo.addEventListener("timeupdate", (e) => {
     $rango.setAttribute("value", `${e.target.currentTime}`);
-    $rango.value = e.target.currentTime
+    $rango.value = e.target.currentTime;
   });
 });
