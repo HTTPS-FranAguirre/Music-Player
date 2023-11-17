@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #161616;
+  background-color: #000000;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,8 @@ p {
   font-family: "IBM Plex Mono", monospace;
   cursor: pointer;
   width: 100%;
-  color: #52ff00;
+  color: rgba(255, 38, 0);
+  text-shadow: 0 0 10px rgba(255, 38, 0);
 }
 
 img {
@@ -89,10 +90,7 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 10px;
   display: flex;
   justify-content: space-evenly;
-  background-image: url("images/head-background-image.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: #161616;
 }
 
 /* head__container-left */
@@ -171,16 +169,16 @@ input[type="range"]::-moz-range-thumb {
 
 .head__icon:hover {
   cursor: pointer;
-  border: 3px solid green;
-  background-color: #00000065;
+  border: 2px solid rgba(255, 38, 0);
+  background-color: #00000070;
 }
 
 .head__icon:hover svg {
-  fill: #236e00;
+  fill: rgba(255, 38, 0, 0.75)
 }
 
 svg {
-  fill: #52ff00;
+  fill: rgba(255, 38, 0);
 }
 
 .head__song-duration-bar {
@@ -200,11 +198,8 @@ svg {
   height: 75vh;
   max-height: 1000px;
   overflow: auto;
-  background-image: url("images/playlist-background-image.png");
-  background-repeat: no-repeat;
-  background-position: 50% 25%;
-  background-size: cover;
   border-radius: 10px;
+  background-color: #161616;
 }
 
 /* playlist scrollbar */
@@ -213,7 +208,7 @@ svg {
   background-color: transparent; /*color de la barra de fondo*/
 }
 .playlist::-webkit-scrollbar-thumb {
-  background-color: #171717; /*color del manejador*/
+  background-color: #000000; /*color del manejador*/
   border-radius: 10px; /* redondear los border del scroll */
 }
 .playlist::-webkit-scrollbar {
