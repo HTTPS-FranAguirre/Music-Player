@@ -205,15 +205,22 @@ svg {
 /* playlist scrollbar */
 
 .playlist::-webkit-scrollbar-track {
-  background-color: transparent; /*color de la barra de fondo*/
+  background-color: transparent; /*  color de la barra de fondo  */
 }
 .playlist::-webkit-scrollbar-thumb {
-  background-color: #000000; /*color del manejador*/
+  background-color: rgba(255, 38, 0); /*color del manejador*/
   border-radius: 10px; /* redondear los border del scroll */
 }
 .playlist::-webkit-scrollbar {
-  width: 40px; /*ancho del scroll vertical*/
+  width: 8px; /*ancho del scroll vertical*/
   height: 16px; /*alto del scroll horizontal*/
+}
+
+/* Personalización para firefox */
+
+.playlist {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 38, 0) black;
 }
 
 .playlist__song-container {
