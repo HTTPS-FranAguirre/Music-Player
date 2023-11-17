@@ -1,28 +1,23 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #161616;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+  background-color: #161616;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 p {
-    padding: 16px;
-    margin: 0;
-    font-family: 'IBM Plex Mono', monospace;
-    cursor: pointer;
-    width: 100%;
-    color: #52FF00;
-}
-
-span {
-    font-family: 'Black Ops One', sans-serif;
-    color: #52FF00;
+  padding: 16px;
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  cursor: pointer;
+  width: 100%;
+  color: #52ff00;
 }
 
 img {
@@ -31,167 +26,179 @@ img {
   height: 105px;
 }
 
-input[type=range] {
-    height: 0px;
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
-    width: 100%;
-  }
-  input[type=range]:focus {
-    outline: none;
-  }
-  input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 16px;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px #00ff00;
-    background: #000000;
-    border-radius: 20px 0 20px 0;
-    border: 1px solid #18D501;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    border: 2px solid #83E584;
-    height: 15px;
-    width: 25px;
-    border-radius: 20px 0 20px 0;
-    background: #00880b;
-    cursor: pointer;
-    -webkit-appearance: none;
-  }
-  input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #205928;
-  }
-  input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 12px;
-    cursor: pointer;
-    box-shadow: 1px 1px 1px #002200;
-    background: #205928;
-    border-radius: 1px;
-    border: 1px solid #18D501;
-  }
-  input[type=range]::-moz-range-thumb {
-    box-shadow: 3px 3px 3px #00AA00;
-    border: 2px solid #83E584;
-    height: 23px;
-    width: 23px;
-    border-radius: 23px;
-    background: #439643;
-    cursor: pointer;
-  }
-  input[type=range]::-ms-track {
-    width: 100%;
-    height: 12px;
-    cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-  }
-  input[type=range]::-ms-fill-lower {
-    background: #205928;
-    border: 1px solid #18D501;
-    border-radius: 2px;
-    box-shadow: 1px 1px 1px #002200;
-  }
-  input[type=range]::-ms-fill-upper {
-    background: #205928;
-    border: 1px solid #18D501;
-    border-radius: 2px;
-    box-shadow: 1px 1px 1px #002200;
-  }
-  input[type=range]::-ms-thumb {
-    margin-top: 1px;
-    box-shadow: 3px 3px 3px #00AA00;
-    border: 2px solid #83E584;
-    height: 23px;
-    width: 23px;
-    border-radius: 23px;
-    background: #439643;
-    cursor: pointer;
-  }
-  input[type=range]:focus::-ms-fill-lower {
-    background: #205928;
-  }
-  input[type=range]:focus::-ms-fill-upper {
-    background: #205928;
-  }
-
-
+input[type="range"] {
+  height: 0px;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  width: 100%;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 16px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #00ff00;
+  background: #000000;
+  border-radius: 20px 0 20px 0;
+  border: 1px solid #18d501;
+}
+input[type="range"]::-webkit-slider-thumb {
+  border: 2px solid #83e584;
+  height: 15px;
+  width: 25px;
+  border-radius: 20px 0 20px 0;
+  background: #00880b;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #205928;
+}
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #002200;
+  background: #205928;
+  border-radius: 1px;
+  border: 1px solid #18d501;
+}
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 3px 3px 3px #00aa00;
+  border: 2px solid #83e584;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background: #439643;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #205928;
+  border: 1px solid #18d501;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #002200;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #205928;
+  border: 1px solid #18d501;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #002200;
+}
+input[type="range"]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 3px 3px 3px #00aa00;
+  border: 2px solid #83e584;
+  height: 23px;
+  width: 23px;
+  border-radius: 23px;
+  background: #439643;
+  cursor: pointer;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #205928;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #205928;
+}
 
 .head {
-    width: 100vw;
-    max-width: 500px;
-    height: 25vh;
-    max-height: 195px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    background-image: url("images/head-background-image.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  width: 100vw;
+  max-width: 500px;
+  height: 25vh;
+  max-height: 195px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  background-image: url("images/head-background-image.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 /* head__container-left */
 
 .head__container-left {
-    display: flex;
-    width: 33%;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  width: 33%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .head__current-song-time {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    height: 25%;
-    border-radius: 10px;
-    border: 1px solid black;
+  background-color: #000000;
+  position: relative;
+  width: 95%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 25%;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.head__current-song-time > span {
+  z-index: 9;
+  font-size: 20px;
+  font-family: "Black Ops One", sans-serif;
+  color: #ffffff;
+  text-shadow: 0px 18px 7px rgba(170, 170, 170, 1);
 }
 
 /* head__container-right */
 
 .head__container-right {
-    display: flex;
-    width: 67%;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  width: 67%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .head__artist-song-title {
-    width: 90%;
-    height: 25px;
-    border-radius: 10px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.90) 0%, rgba(0, 0, 0, 0.10) 100%);
+  width: 90%;
+  height: 25px;
+  border-radius: 10px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
 }
 
 .head__artist-song-title > marquee > p {
-    margin: 0;
-    padding: 0;
-    color: #ff2600;
-    font-size: 16px;
-    text-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  color: #ff2600;
+  font-size: 16px;
+  text-wrap: nowrap;
 }
 
 .head__song-control {
-    width: 85%;
-    height: 37px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
+  width: 85%;
+  height: 37px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .head__icon {
-    width: 37px;
-    height: 37px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .head__icon:hover {
@@ -205,65 +212,66 @@ input[type=range] {
 }
 
 svg {
-    fill: #52FF00;
+  fill: #52ff00;
 }
 
 .head__song-duration-bar {
-    width: 90%;
-    height: 16px;
-    border-radius: 20px 0 20px 0;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
+  width: 90%;
+  height: 16px;
+  border-radius: 20px 0;
+  display: flex;
+  align-items: center;
 }
 
 /* RANGO */
 
-
 /* playlist */
 .playlist {
-    width: 100vw;
-    max-width: 500px;
-    height: 75vh;
-    max-height: 1000px;
-    overflow: auto;
-    background-image: url("images/playlist-background-image.png");
-    background-repeat: no-repeat;
-    background-position: 50% 25%;
-    background-size: cover;
-    border-radius: 10px;
+  width: 100vw;
+  max-width: 500px;
+  height: 75vh;
+  max-height: 1000px;
+  overflow: auto;
+  background-image: url("images/playlist-background-image.png");
+  background-repeat: no-repeat;
+  background-position: 50% 25%;
+  background-size: cover;
+  border-radius: 10px;
 }
 
 /* playlist scrollbar */
 
 .playlist::-webkit-scrollbar-track {
-    background-color: transparent; /*color de la barra de fondo*/
-    
-  }
-  .playlist::-webkit-scrollbar-thumb {
-    background-color: #171717; /*color del manejador*/
-    border-radius: 10px; /* redondear los border del scroll */
-  }
-  .playlist::-webkit-scrollbar {
-    width: 40px; /*ancho del scroll vertical*/
-    height: 16px; /*alto del scroll horizontal*/
-  }
+  background-color: transparent; /*color de la barra de fondo*/
+}
+.playlist::-webkit-scrollbar-thumb {
+  background-color: #171717; /*color del manejador*/
+  border-radius: 10px; /* redondear los border del scroll */
+}
+.playlist::-webkit-scrollbar {
+  width: 40px; /*ancho del scroll vertical*/
+  height: 16px; /*alto del scroll horizontal*/
+}
 
 .playlist__song-container {
-    border-radius: 10px;
-    display: flex;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.50) 100%);
-    cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  cursor: pointer;
 }
 
 /* DOM classes */
 
 .active {
-    background-color: #52FF00;
+  background-color: #52ff00;
 }
 
 .active__name {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .cancionActual {
