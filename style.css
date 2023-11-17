@@ -137,22 +137,22 @@ input[type="range"]:focus::-ms-fill-upper {
 }
 
 .head__current-song-time {
-  background-color: #000000;
-  position: relative;
-  width: 95%;
+  background-color: #000000ee;
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   height: 25%;
   border-radius: 10px;
-  border: 1px solid black;
 }
 
 .head__current-song-time > span {
   z-index: 9;
-  font-size: 20px;
+  font-size: 100%;
   font-family: "Black Ops One", sans-serif;
   color: #ffffff;
-  text-shadow: 0px 18px 7px rgba(170, 170, 170, 1);
+  /* La primera es izquierda-derecha, segunda es arriba-abajo */
+  text-shadow: 0px 13px 7px rgba(255, 0, 0, 0.95), 0px -1px 1px rgb(255, 0, 0), 1px 0px 1px rgb(255, 0, 0), -1px 0px 1px rgb(255, 0, 0);
 }
 
 /* head__container-right */
