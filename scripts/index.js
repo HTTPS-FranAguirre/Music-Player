@@ -43,6 +43,8 @@ $buttonBackward.addEventListener("click", (e) => {
       let musica = nn.querySelector("audio");
       musica.pause();
       musica.currentTime = 0;
+      let cancion = nn.querySelector("p");
+      cancion.classList.remove("active__name");
       nn.previousElementSibling.classList.add("back");
     }
   });
@@ -55,6 +57,7 @@ $buttonBackward.addEventListener("click", (e) => {
       musica.play();
       let cancion = nn.querySelector("p");
       $artistSongTitle.textContent = cancion.textContent;
+      cancion.classList.add("active__name");
       nn.classList.remove("back");
     }
   });
@@ -115,6 +118,8 @@ $buttonForward.addEventListener("click", (e) => {
       let musica = nn.querySelector("audio");
       musica.pause();
       musica.currentTime = 0;
+      let cancion = nn.querySelector("p");
+      cancion.classList.remove("active__name");
       nn.nextElementSibling.classList.add("next");
     }
     if (nn.classList.contains("next")) {
@@ -125,6 +130,7 @@ $buttonForward.addEventListener("click", (e) => {
       musica.play();
       let cancion = nn.querySelector("p");
       $artistSongTitle.textContent = cancion.textContent;
+      cancion.classList.add("active__name");
       nn.classList.remove("next");
     }
   });
@@ -196,7 +202,7 @@ $song.forEach((reproducciendo) => {
 
         let duracionTotal = `${minutosText}:${segundosText}`;
         $headCurrentSongTime.textContent = duracionTotal;
-
+        $rango.max = reproducciendoActual.duration;
         clearInterval(v);
       }
     }, 1000);
@@ -231,7 +237,6 @@ $song.forEach((reproducciendo) => {
         musica.currentTime = 0;
         let cancion = nn.querySelector("p");
         cancion.classList.remove("active__name");
-
         nn.nextElementSibling.classList.add("next");
       }
       if (nn.classList.contains("next")) {
