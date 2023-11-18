@@ -138,10 +138,12 @@ $playlist.addEventListener("click", (e) => {
     let musica = $playlistSong[index].querySelector("audio");
     if (e.target === currentValue) {
       $playlistSong[index].classList.add("cancionActual");
+      $playlistSongName[index].classList.add("active__name");
       musica.currentTime = 0;
       musica.play();
     } else {
       $playlistSong[index].classList.remove("cancionActual");
+      $playlistSongName[index].classList.remove("active__name");
       musica.pause();
       musica.currentTime = 0;
     }
@@ -221,4 +223,28 @@ $song.forEach((reproducciendo) => {
 
       $headCurrentSongTimeReal.textContent = tiempoActual;
   });
+  reproducciendo.addEventListener("ended", (e) => {
+    $playlistSong.forEach((nn) => {
+      if (nn.classList.contains("cancionActual")) {
+        let musica = nn.querySelector("audio");
+        musica.pause();
+        musica.currentTime = 0;
+        let cancion = nn.querySelector("p");
+        cancion.classList.remove("active__name");
+
+        nn.nextElementSibling.classList.add("next");
+      }
+      if (nn.classList.contains("next")) {
+        nn.previousElementSibling.classList.remove("cancionActual");
+        nn.classList.add("cancionActual");
+        let musica = nn.querySelector("audio");
+        musica.currentTime = 0;
+        musica.play();
+        let cancion = nn.querySelector("p");
+        $artistSongTitle.textContent = cancion.textContent;
+        cancion.classList.add("active__name");
+        nn.classList.remove("next");
+      }
+    });
+  })
 });
