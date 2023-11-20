@@ -85,7 +85,7 @@ input[type="range"]::-moz-range-thumb {
 .head {
   width: 100vw;
   max-width: 500px;
-  height: 25vh;
+  height: 28vh;
   max-height: 195px;
   border-radius: 10px;
   display: flex;
@@ -97,7 +97,7 @@ input[type="range"]::-moz-range-thumb {
 
 .head__container-left {
   display: flex;
-  width: 33%;
+  width: 35%;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -105,7 +105,7 @@ input[type="range"]::-moz-range-thumb {
 
 .head__current-song-time {
   background-color: #000000ee;
-  width: 100%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -125,7 +125,7 @@ input[type="range"]::-moz-range-thumb {
 
 .head__container-right {
   display: flex;
-  width: 67%;
+  width: 65%;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -195,7 +195,7 @@ svg {
 .playlist {
   width: 100vw;
   max-width: 500px;
-  height: 75vh;
+  height: 72vh;
   max-height: 1000px;
   overflow: auto;
   border-radius: 10px;
