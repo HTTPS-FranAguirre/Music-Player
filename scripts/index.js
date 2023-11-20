@@ -22,6 +22,50 @@ const $headSongDurationBar = d.querySelector(
 
 const $rango = d.querySelector(".rango");
 
+const $buttonToggle = d.querySelector(".button-toggle");
+
+$buttonToggle.addEventListener("click", (e) => {
+  $buttonToggle.classList.toggle("pause");
+  if (!$buttonToggle.classList.contains("pause")){
+    // console.log("reanudar");
+    $playlistSong.forEach((ff) => {
+      if (ff.classList.contains("cancionActual")) {
+        let audio = ff.querySelector("audio");
+        audio.play();
+      }
+    });
+    $buttonToggle.innerHTML = `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="1.5em"
+    viewBox="0 0 320 512"
+  >
+    <path
+      d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"
+    />
+  </svg>`
+  }
+  if ($buttonToggle.classList.contains("pause")){
+    // console.log("pausar");
+    $playlistSong.forEach((ff) => {
+      if (ff.classList.contains("cancionActual")) {
+        let audio = ff.querySelector("audio");
+        audio.pause();
+      }
+    });
+    $buttonToggle.innerHTML = `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="1.5em"
+    viewBox="0 0 384 512"
+  >
+    <path
+      d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
+    />
+  </svg>`
+    
+  }
+})
+
+
 /* Creacion dinamica de src en etiquetas "audio" */
 $playlistSong.forEach((recorrido) => {
   const texto = recorrido.firstElementChild.textContent;
@@ -32,8 +76,6 @@ $playlistSong.forEach((recorrido) => {
 
 //Control de botones
 const $buttonBackward = d.querySelector(".button-backward");
-const $buttonPlay = d.querySelector(".button-play");
-const $buttonPause = d.querySelector(".button-pause");
 const $buttonStop = d.querySelector(".button-stop");
 const $buttonForward = d.querySelector(".button-forward");
 
@@ -84,24 +126,6 @@ $buttonBackward.addEventListener("click", (e) => {
 //     }, 100);
 //   })
 // })
-
-$buttonPlay.addEventListener("click", (e) => {
-  $playlistSong.forEach((ff) => {
-    if (ff.classList.contains("cancionActual")) {
-      let audio = ff.querySelector("audio");
-      audio.play();
-    }
-  });
-});
-
-$buttonPause.addEventListener("click", (e) => {
-  $playlistSong.forEach((ff) => {
-    if (ff.classList.contains("cancionActual")) {
-      let audio = ff.querySelector("audio");
-      audio.pause();
-    }
-  });
-});
 
 $buttonStop.addEventListener("click", (e) => {
   $playlistSong.forEach((bb) => {
@@ -184,6 +208,18 @@ $song.forEach((reproducciendo) => {
     $rango.addEventListener("click", (e) => {
       reproducciendoActual.currentTime = e.target.valueAsNumber;
       reproducciendoActual.currentTime === $rango.value;
+
+    //Boton de pausa-play se actualiza cuando se reproduce
+    $buttonToggle.classList.remove("pause");
+    $buttonToggle.innerHTML = `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="1.5em"
+    viewBox="0 0 320 512"
+  >
+    <path
+      d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"
+    />
+  </svg>`;
     });
 
     let v = setInterval(() => {
