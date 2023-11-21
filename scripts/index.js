@@ -75,9 +75,44 @@ $playlistSong.forEach((recorrido) => {
 });
 
 //Control de botones
+const $buttonSpeedControl = d.querySelector(".speed-control");
 const $buttonBackward = d.querySelector(".button-backward");
 const $buttonStop = d.querySelector(".button-stop");
 const $buttonForward = d.querySelector(".button-forward");
+
+
+let contadorClicks = 2;
+$buttonSpeedControl.addEventListener("click", (e) => {
+  let texto = $buttonSpeedControl.querySelector("p");
+
+  contadorClicks++;
+
+  $playlistSong.forEach((bb) => {
+
+      let audio = bb.querySelector("audio");   
+      if (contadorClicks >= 4){
+        audio.playbackRate = 2;
+        texto.innerHTML = 2;
+        contadorClicks = 0;
+      }
+    
+      if (contadorClicks === 1) {
+        audio.playbackRate = 0.5;
+        texto.innerHTML = 0.5;
+      }
+    
+      if (contadorClicks === 2) {
+        audio.playbackRate = 1;
+        texto.innerHTML = 1;
+      }
+    
+      if (contadorClicks === 3) {
+        audio.playbackRate = 1.5;
+        texto.innerHTML = 1.5;
+      }
+  });
+})
+
 
 $buttonBackward.addEventListener("click", (e) => {
   $playlistSong.forEach((nn) => {

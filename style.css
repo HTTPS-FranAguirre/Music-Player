@@ -159,8 +159,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .head__icon {
-  width: 37px;
-  height: 37px;
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -175,6 +175,11 @@ input[type="range"]::-moz-range-thumb {
 
 .head__icon:hover svg {
   fill: rgba(255, 38, 0, 0.75)
+}
+
+.head__icon > p {
+  width: auto;
+  padding: 0;
 }
 
 svg {
