@@ -122,7 +122,13 @@ $buttonBackward.addEventListener("click", (e) => {
       musica.currentTime = 0;
       let cancion = nn.querySelector("p");
       cancion.classList.remove("active__name");
-      nn.previousElementSibling.classList.add("back");
+      if (!(nn.previousElementSibling === null)){
+        nn.previousElementSibling.classList.add("back");
+      } else {
+        cancion.classList.add("active__name");
+        musica.currentTime = 0;
+        musica.play();
+      }
     }
   });
   $playlistSong.forEach((nn) => {
@@ -179,7 +185,13 @@ $buttonForward.addEventListener("click", (e) => {
       musica.currentTime = 0;
       let cancion = nn.querySelector("p");
       cancion.classList.remove("active__name");
-      nn.nextElementSibling.classList.add("next");
+      if (!(nn.nextElementSibling === null)){
+        nn.nextElementSibling.classList.add("next");
+      } else {
+        cancion.classList.add("active__name");
+        musica.currentTime = 0;
+        musica.play();
+      }
     }
     if (nn.classList.contains("next")) {
       nn.previousElementSibling.classList.remove("cancionActual");
