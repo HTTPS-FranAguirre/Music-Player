@@ -124,6 +124,7 @@ $buttonBackward.addEventListener("click", (e) => {
       cancion.classList.remove("active__name");
       if (!(nn.previousElementSibling === null)){
         nn.previousElementSibling.classList.add("back");
+        $playlist.scrollBy(0, -52);
       } else {
         cancion.classList.add("active__name");
         musica.currentTime = 0;
@@ -187,6 +188,7 @@ $buttonForward.addEventListener("click", (e) => {
       cancion.classList.remove("active__name");
       if (!(nn.nextElementSibling === null)){
         nn.nextElementSibling.classList.add("next");
+        $playlist.scrollBy(0, 52);
       } else {
         cancion.classList.add("active__name");
         musica.currentTime = 0;
