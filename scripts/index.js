@@ -338,3 +338,13 @@ $song.forEach((reproducciendo) => {
     });
   })
 });
+//Si se clickea en un elemento no tan visible se scrollea 52pixeles
+$playlist.addEventListener("click", (e) => {
+  console.log(e.clientY);
+  if (e.clientY < 230){
+    $playlist.scrollBy(0, -52);
+  }
+  if (e.clientY > 765) {
+    $playlist.scrollBy(0, 52);
+  }
+})
