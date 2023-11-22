@@ -28,12 +28,14 @@ img {
 }
 
 input[type="range"] {
-  height: 0px;
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
   width: 100%;
+  background: #000000;
+  border-radius: 20px 0;
+  height: 16px;
+  
+  -webkit-appearance: none;
 }
+
 input[type="range"]:focus {
   outline: none;
 }
@@ -41,16 +43,15 @@ input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 16px;
   cursor: pointer;
-  background: #000000;
   border-radius: 20px 0;
   box-shadow: 3px 3px 5px rgba(255, 38, 0);
 }
 input[type="range"]::-webkit-slider-thumb {
   border-bottom: 2px solid rgba(255, 38, 0);
   border-right: 4px solid rgba(255, 38, 0);
-  background-color: #000000;
-  height: 15px;
-  width: 25px;
+  background-color: rgba(255, 38, 0);
+  height: 16px;
+  width: 10px;
   border-radius: 20px 0;
   cursor: pointer;
   -webkit-appearance: none;
@@ -70,17 +71,20 @@ input[type="range"]::-moz-range-track {
   box-shadow: 3px 3px 5px rgba(255, 38, 0);
 }
 input[type="range"]::-moz-range-thumb {
-  border:#000000;
+  border: #000000;
   border-bottom: 2px solid rgba(255, 38, 0);
   border-right: 4px solid rgba(255, 38, 0);
   background-color: #000000;
   height: 15px;
-  width: 25px;
+  width: 10px;
   border-radius: 20px 0;
   cursor: pointer;
   appearance: none;
 }
 
+input[type="range"]::-moz-range-progress {
+  background: red;
+}
 
 .head {
   width: 100vw;
@@ -118,7 +122,8 @@ input[type="range"]::-moz-range-thumb {
   font-size: 100%;
   font-family: "Black Ops One", sans-serif;
   /* La primera es izquierda-derecha, segunda es arriba-abajo */
-  text-shadow: 0px 13px 7px rgb(255, 38, 0), 0px -1px 1px rgb(255, 38, 0), 1px 0px 1px rgb(255, 38, 0), -1px 0px 1px rgb(255, 38, 0);
+  text-shadow: 0px 13px 7px rgb(255, 38, 0), 0px -1px 1px rgb(255, 38, 0),
+    1px 0px 1px rgb(255, 38, 0), -1px 0px 1px rgb(255, 38, 0);
 }
 
 /* head__container-right */
@@ -174,7 +179,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .head__icon:hover svg {
-  fill: rgba(255, 38, 0, 0.75)
+  fill: rgba(255, 38, 0, 0.75);
 }
 
 .head__icon > p {

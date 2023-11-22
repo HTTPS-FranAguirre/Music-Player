@@ -16,10 +16,6 @@ const $playlistSongName = d.querySelectorAll(".playlist__song-container p");
 
 const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
-const $headSongDurationBar = d.querySelector(
-  ".head__song-duration-bar progress"
-);
-
 const $rango = d.querySelector(".rango");
 
 const $buttonToggle = d.querySelector(".button-toggle");
@@ -80,6 +76,15 @@ const $buttonBackward = d.querySelector(".button-backward");
 const $buttonStop = d.querySelector(".button-stop");
 const $buttonForward = d.querySelector(".button-forward");
 
+const $headIcon = d.querySelectorAll(".head__icon");
+
+$headIcon.forEach((aa) => {
+  aa.addEventListener("touchend", (e) => {
+    setTimeout(()=> {
+
+    })
+  })
+});
 
 let contadorClicks = 2;
 $buttonSpeedControl.addEventListener("click", (e) => {
@@ -244,7 +249,6 @@ const $song = d.querySelectorAll("audio");
 $song.forEach((reproducciendo) => {
   reproducciendo.addEventListener("play", (e) => {
     let reproducciendoActual = e.target;
-    // console.log(Number.isNaN(reproducciendoActual.duration));
 
     // Manejo control de rango
     $rango.max = reproducciendoActual.duration;
@@ -313,6 +317,9 @@ $song.forEach((reproducciendo) => {
       let tiempoActual = `${minutosLength}:${segundosLength}`;
 
       $headCurrentSongTimeReal.textContent = tiempoActual;
+      console.log($rango.value);
+      $rango.style.background = `linear-gradient(to right, red ${$rango.min}%, black ${$rango.value}%, black ${$rango.max}% )`;
+
   });
   reproducciendo.addEventListener("ended", (e) => {
     $playlistSong.forEach((nn) => {
@@ -338,11 +345,10 @@ $song.forEach((reproducciendo) => {
     });
   })
 });
+
 //Si se clickea en un elemento no tan visible se scrollea 52pixeles
 $playlist.addEventListener("click", (e) => {
   let tamanioPantalla = window.innerHeight - 52;
-  console.log(e.clientY)
-  console.log(tamanioPantalla)
   
   if (e.clientY < 230){
     $playlist.scrollBy(0, -52);
