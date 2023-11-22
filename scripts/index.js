@@ -340,11 +340,14 @@ $song.forEach((reproducciendo) => {
 });
 //Si se clickea en un elemento no tan visible se scrollea 52pixeles
 $playlist.addEventListener("click", (e) => {
-  console.log(e.clientY);
+  let tamanioPantalla = window.innerHeight - 52;
+  console.log(e.clientY)
+  console.log(tamanioPantalla)
+  
   if (e.clientY < 230){
     $playlist.scrollBy(0, -52);
   }
-  if (e.clientY > 765) {
+  if (e.clientY > tamanioPantalla) {
     $playlist.scrollBy(0, 52);
   }
 })
