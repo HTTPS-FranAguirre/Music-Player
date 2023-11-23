@@ -295,6 +295,9 @@ $song.forEach((playing) => {
       $headCurrentSongTimeReal.textContent = timeNow;
 
       const $color = document.documentElement.style.getPropertyValue("--color");
+      if ($color === ""){
+        $range.style.background = `linear-gradient(to right, rgb(0 233 255) ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
+      };
       $range.style.background = `linear-gradient(to right, ${$color} ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
   });
   playing.addEventListener("ended", () => {
@@ -342,6 +345,3 @@ colorClick.addEventListener("input", (e) => {
   const $html = document.documentElement;
   $html.style.setProperty("--color", `${co}`)
 })
-
-// buen color
-// rgb(0 233 255); 
