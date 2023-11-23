@@ -332,3 +332,15 @@ $playlist.addEventListener("click", (e) => {
     $playlist.scrollBy(0, 52);
   }
 })
+
+const colorClick = d.querySelector(".colorActual");
+// console.log(colorClick);
+
+colorClick.addEventListener("input", (e) => {
+  let co = e.target.value;
+  const $html = document.documentElement;
+  $html.style.setProperty("--color", `${co}`)
+})
+
+// buen color
+// rgb(0 233 255); 
