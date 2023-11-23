@@ -16,17 +16,16 @@ const $playlistSongName = d.querySelectorAll(".playlist__song-container p");
 
 const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
-const $rango = d.querySelector(".rango");
+const $range = d.querySelector(".range");
 
 const $buttonToggle = d.querySelector(".button-toggle");
 
-$buttonToggle.addEventListener("click", (e) => {
+$buttonToggle.addEventListener("click", () => {
   $buttonToggle.classList.toggle("pause");
   if (!$buttonToggle.classList.contains("pause")){
-    // console.log("reanudar");
-    $playlistSong.forEach((ff) => {
-      if (ff.classList.contains("cancionActual")) {
-        let audio = ff.querySelector("audio");
+    $playlistSong.forEach((el) => {
+      if (el.classList.contains("currentSong")) {
+        let audio = el.querySelector("audio");
         audio.play();
       }
     });
@@ -41,10 +40,9 @@ $buttonToggle.addEventListener("click", (e) => {
   </svg>`
   }
   if ($buttonToggle.classList.contains("pause")){
-    // console.log("pausar");
-    $playlistSong.forEach((ff) => {
-      if (ff.classList.contains("cancionActual")) {
-        let audio = ff.querySelector("audio");
+    $playlistSong.forEach((el) => {
+      if (el.classList.contains("currentSong")) {
+        let audio = el.querySelector("audio");
         audio.pause();
       }
     });
@@ -62,15 +60,15 @@ $buttonToggle.addEventListener("click", (e) => {
 })
 
 
-/* Creacion dinamica de src en etiquetas "audio" */
-$playlistSong.forEach((recorrido) => {
-  const texto = recorrido.firstElementChild.textContent;
-  const musiquita = recorrido.lastElementChild;
-  musiquita.setAttribute("src", `./songs/${texto}.mp3`);
-  musiquita.setAttribute("rel", "preload");
+/* Dynamic creation of "src" in "audio" tags */
+$playlistSong.forEach((el) => {
+  const $text = el.firstElementChild.textContent;
+  const $audio = el.lastElementChild;
+  $audio.setAttribute("src", `./songs/${$text}.mp3`);
+  $audio.setAttribute("rel", "preload");
 });
 
-//Control de botones
+//Button control
 const $buttonSpeedControl = d.querySelector(".speed-control");
 const $buttonBackward = d.querySelector(".button-backward");
 const $buttonStop = d.querySelector(".button-stop");
@@ -78,158 +76,136 @@ const $buttonForward = d.querySelector(".button-forward");
 
 const $headIcon = d.querySelectorAll(".head__icon");
 
-$headIcon.forEach((aa) => {
-  aa.addEventListener("touchend", (e) => {
-    setTimeout(()=> {
+// $headIcon.forEach((el) => {
+//   el.addEventListener("touchend", (e) => {
+//     setTimeout(()=> {
 
-    })
-  })
-});
+//     })
+//   })
+// });
 
-let contadorClicks = 2;
-$buttonSpeedControl.addEventListener("click", (e) => {
-  let texto = $buttonSpeedControl.querySelector("p");
+let clickCounter = 2;
+$buttonSpeedControl.addEventListener("click", () => {
+  let text = $buttonSpeedControl.querySelector("p");
 
-  contadorClicks++;
+  clickCounter++;
 
-  $playlistSong.forEach((bb) => {
+  $playlistSong.forEach((el) => {
 
-      let audio = bb.querySelector("audio");   
-      if (contadorClicks >= 4){
+      let audio = el.querySelector("audio");   
+      if (clickCounter >= 4){
         audio.playbackRate = 2;
-        texto.innerHTML = 2;
-        contadorClicks = 0;
+        text.innerHTML = 2;
+        clickCounter = 0;
       }
     
-      if (contadorClicks === 1) {
+      if (clickCounter === 1) {
         audio.playbackRate = 0.5;
-        texto.innerHTML = 0.5;
+        text.innerHTML = 0.5;
       }
     
-      if (contadorClicks === 2) {
+      if (clickCounter === 2) {
         audio.playbackRate = 1;
-        texto.innerHTML = 1;
+        text.innerHTML = 1;
       }
     
-      if (contadorClicks === 3) {
+      if (clickCounter === 3) {
         audio.playbackRate = 1.5;
-        texto.innerHTML = 1.5;
+        text.innerHTML = 1.5;
       }
   });
 })
 
 
-$buttonBackward.addEventListener("click", (e) => {
-  $playlistSong.forEach((nn) => {
-    if (nn.classList.contains("cancionActual")) {
-      let musica = nn.querySelector("audio");
-      musica.pause();
-      musica.currentTime = 0;
-      let cancion = nn.querySelector("p");
-      cancion.classList.remove("active__name");
-      if (!(nn.previousElementSibling === null)){
-        nn.previousElementSibling.classList.add("back");
+$buttonBackward.addEventListener("click", () => {
+  $playlistSong.forEach((el) => {
+    if (el.classList.contains("currentSong")) {
+      let audio = el.querySelector("audio");
+      audio.pause();
+      audio.currentTime = 0;
+      let song = el.querySelector("p");
+      song.classList.remove("active__name");
+      if (!(el.previousElementSibling === null)){
+        el.previousElementSibling.classList.add("back");
         $playlist.scrollBy(0, -52);
       } else {
-        cancion.classList.add("active__name");
-        musica.currentTime = 0;
-        musica.play();
+        song.classList.add("active__name");
+        audio.currentTime = 0;
+        audio.play();
       }
     }
   });
-  $playlistSong.forEach((nn) => {
-    if (nn.classList.contains("back")) {
-      nn.nextElementSibling.classList.remove("cancionActual");
-      nn.classList.add("cancionActual");
-      let musica = nn.querySelector("audio");
-      musica.currentTime = 0;
-      musica.play();
-      let cancion = nn.querySelector("p");
-      $artistSongTitle.textContent = cancion.textContent;
-      cancion.classList.add("active__name");
-      nn.classList.remove("back");
+  $playlistSong.forEach((el) => {
+    if (el.classList.contains("back")) {
+      el.nextElementSibling.classList.remove("currentSong");
+      el.classList.add("currentSong");
+      let audio = el.querySelector("audio");
+      audio.currentTime = 0;
+      audio.play();
+      let song = el.querySelector("p");
+      $artistSongTitle.textContent = song.textContent;
+      song.classList.add("active__name");
+      el.classList.remove("back");
     }
   });
 });
 
-// $buttonBackward.addEventListener("click", (e) => {
-//   $playlistSong.forEach(nn => {
-//     console.log("***************");
-//     if (nn.classList.contains("cancionActual")){
-//       let musica = nn.querySelector("audio");
-//       musica.pause();
-//       musica.currentTime = 0;
-//       nn.previousElementSibling.classList.add("back");
-//     };
-
-//     setTimeout(() => {
-//       if (nn.classList.contains("back")){
-//         nn.nextElementSibling.classList.remove("cancionActual");
-//         nn.classList.add("cancionActual");
-//         let musica = nn.querySelector("audio");
-//         musica.play();
-//         nn.classList.remove("back");
-//       }
-//     }, 100);
-//   })
-// })
-
-$buttonStop.addEventListener("click", (e) => {
-  $playlistSong.forEach((bb) => {
-    if (bb.classList.contains("cancionActual")) {
-      let audio = bb.querySelector("audio");
+$buttonStop.addEventListener("click", () => {
+  $playlistSong.forEach((el) => {
+    if (el.classList.contains("currentSong")) {
+      let audio = el.querySelector("audio");
       audio.currentTime = 0;
     }
   });
 });
 
-$buttonForward.addEventListener("click", (e) => {
-  $playlistSong.forEach((nn) => {
-    if (nn.classList.contains("cancionActual")) {
-      let musica = nn.querySelector("audio");
-      musica.pause();
-      musica.currentTime = 0;
-      let cancion = nn.querySelector("p");
-      cancion.classList.remove("active__name");
-      if (!(nn.nextElementSibling === null)){
-        nn.nextElementSibling.classList.add("next");
+$buttonForward.addEventListener("click", () => {
+  $playlistSong.forEach((el) => {
+    if (el.classList.contains("currentSong")) {
+      let audio = el.querySelector("audio");
+      audio.pause();
+      audio.currentTime = 0;
+      let song = el.querySelector("p");
+      song.classList.remove("active__name");
+      if (!(el.nextElementSibling === null)){
+        el.nextElementSibling.classList.add("next");
         $playlist.scrollBy(0, 52);
       } else {
-        cancion.classList.add("active__name");
-        musica.currentTime = 0;
-        musica.play();
+        song.classList.add("active__name");
+        audio.currentTime = 0;
+        audio.play();
       }
     }
-    if (nn.classList.contains("next")) {
-      nn.previousElementSibling.classList.remove("cancionActual");
-      nn.classList.add("cancionActual");
-      let musica = nn.querySelector("audio");
-      musica.currentTime = 0;
-      musica.play();
-      let cancion = nn.querySelector("p");
-      $artistSongTitle.textContent = cancion.textContent;
-      cancion.classList.add("active__name");
-      nn.classList.remove("next");
+    if (el.classList.contains("next")) {
+      el.previousElementSibling.classList.remove("currentSong");
+      el.classList.add("currentSong");
+      let audio = el.querySelector("audio");
+      audio.currentTime = 0;
+      audio.play();
+      let song = el.querySelector("p");
+      $artistSongTitle.textContent = song.textContent;
+      song.classList.add("active__name");
+      el.classList.remove("next");
     }
   });
 });
 
-/* Reproductor de musica actual */
+/* Reproductor de audio actual */
 $playlist.addEventListener("click", (e) => {
   $artistSongTitle.textContent = e.target.textContent;
 
   $playlistSongName.forEach(function callback(currentValue, index) {
-    let musica = $playlistSong[index].querySelector("audio");
+    let audio = $playlistSong[index].querySelector("audio");
     if (e.target === currentValue) {
-      $playlistSong[index].classList.add("cancionActual");
+      $playlistSong[index].classList.add("currentSong");
       $playlistSongName[index].classList.add("active__name");
-      musica.currentTime = 0;
-      musica.play();
+      audio.currentTime = 0;
+      audio.play();
     } else {
-      $playlistSong[index].classList.remove("cancionActual");
+      $playlistSong[index].classList.remove("currentSong");
       $playlistSongName[index].classList.remove("active__name");
-      musica.pause();
-      musica.currentTime = 0;
+      audio.pause();
+      audio.currentTime = 0;
     }
 
     //Img random
@@ -238,53 +214,53 @@ $playlist.addEventListener("click", (e) => {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min) + min);
     }
-    let numero = getRandomInt(1, 21);
-    $headArtistPhoto.src = `./images/${numero}.jpg`;
+    let number = getRandomInt(1, 21);
+    $headArtistPhoto.src = `./images/${number}.jpg`;
   });
 });
 
-/* Duración de la canción y tiempo actual */
+/* Song duration and current time */
 const $song = d.querySelectorAll("audio");
 
-$song.forEach((reproducciendo) => {
-  reproducciendo.addEventListener("play", (e) => {
-    let reproducciendoActual = e.target;
+$song.forEach((playing) => {
+  playing.addEventListener("play", (e) => {
+    let currentAudio = e.target;
 
-    // Manejo control de rango
-    $rango.max = reproducciendoActual.duration;
+    // range control
+    $range.max = currentAudio.duration;
 
-    $rango.addEventListener("touchend", (e) => {
-      reproducciendoActual.currentTime = e.target.valueAsNumber;
-      reproducciendoActual.currentTime === $rango.value;
+    $range.addEventListener("touchend", (e) => {
+      currentAudio.currentTime = e.target.valueAsNumber;
+      currentAudio.currentTime === $range.value;
     });
 
-    $rango.addEventListener("click", (e) => {
-      reproducciendoActual.currentTime = e.target.valueAsNumber;
-      reproducciendoActual.currentTime === $rango.value;
+    $range.addEventListener("click", (e) => {
+      currentAudio.currentTime = e.target.valueAsNumber;
+      currentAudio.currentTime === $range.value;
     });
 
-    let v = setInterval(() => {
-      if (!Number.isNaN(reproducciendoActual.duration) === true) {
-        let minutos = Math.floor(reproducciendoActual.duration / 60);
-        let segundos = Math.floor(reproducciendoActual.duration % 60);
-        let minutosText = minutos.toString();
-        let segundosText = segundos.toString();
+    let checker = setInterval(() => {
+      if (Number.isNaN(currentAudio.duration) === false) {
+        let minutes = Math.floor(currentAudio.duration / 60);
+        let seconds = Math.floor(currentAudio.duration % 60);
+        let minutesText = minutes.toString();
+        let secondsText = seconds.toString();
 
-        if (minutosText.length < 2) {
-          minutosText = `0${minutos}`;
+        if (minutesText.length < 2) {
+          minutesText = `0${minutes}`;
         }
-        if (segundosText.length < 2) {
-          segundosText = `0${segundos}`;
+        if (secondsText.length < 2) {
+          secondsText = `0${seconds}`;
         }
 
-        let duracionTotal = `${minutosText}:${segundosText}`;
-        $headCurrentSongTime.textContent = duracionTotal;
-        $rango.max = reproducciendoActual.duration;
-        clearInterval(v);
+        let songDuration = `${minutesText}:${secondsText}`;
+        $headCurrentSongTime.textContent = songDuration;
+        $range.max = currentAudio.duration;
+        clearInterval(checker);
       }
     }, 1000);
 
-    //Boton de pausa-play se actualiza cuando se reproduce
+    //button toggle between play and pause
     $buttonToggle.classList.remove("pause");
     $buttonToggle.innerHTML = `<svg
     xmlns="http://www.w3.org/2000/svg"
@@ -297,63 +273,62 @@ $song.forEach((reproducciendo) => {
   </svg>`;
   });
 
-  reproducciendo.addEventListener("timeupdate", (e) => {
-    let tiempo = e.target.currentTime;
-    $rango.setAttribute("value", `${tiempo}`);
-    $rango.value = tiempo;
-    let minutos = Math.floor(tiempo / 60);
-      let segundos = Math.floor(tiempo % 60);
-      let minutosLength = minutos.toString();
-      let segundosLength = segundos.toString();
+  playing.addEventListener("timeupdate", (e) => {
+    let time = e.target.currentTime;
+    $range.setAttribute("value", `${time}`);
+    $range.value = time;
+    let minutes = Math.floor(time / 60);
+      let seconds = Math.floor(time % 60);
+      let minutesLength = minutes.toString();
+      let secondsLength = seconds.toString();
 
-      if (segundosLength.length < 2) {
-        segundosLength = `0${segundos}`;
+      if (secondsLength.length < 2) {
+        secondsLength = `0${seconds}`;
       }
 
-      if (minutosLength.length < 2) {
-        minutosLength = `0${minutos}`;
+      if (minutesLength.length < 2) {
+        minutesLength = `0${minutes}`;
       }
 
-      let tiempoActual = `${minutosLength}:${segundosLength}`;
+      let timeNow = `${minutesLength}:${secondsLength}`;
 
-      $headCurrentSongTimeReal.textContent = tiempoActual;
-      console.log($rango.value);
-      $rango.style.background = `linear-gradient(to right, red ${$rango.min}%, black ${$rango.value}%, black ${$rango.max}% )`;
+      $headCurrentSongTimeReal.textContent = timeNow;
+      $range.style.background = `linear-gradient(to right, orangered ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
 
   });
-  reproducciendo.addEventListener("ended", (e) => {
-    $playlistSong.forEach((nn) => {
-      if (nn.classList.contains("cancionActual")) {
-        let musica = nn.querySelector("audio");
-        musica.pause();
-        musica.currentTime = 0;
-        let cancion = nn.querySelector("p");
-        cancion.classList.remove("active__name");
-        nn.nextElementSibling.classList.add("next");
+  playing.addEventListener("ended", () => {
+    $playlistSong.forEach((el) => {
+      if (el.classList.contains("currentSong")) {
+        let audio = el.querySelector("audio");
+        audio.pause();
+        audio.currentTime = 0;
+        let song = el.querySelector("p");
+        song.classList.remove("active__name");
+        el.nextElementSibling.classList.add("next");
       }
-      if (nn.classList.contains("next")) {
-        nn.previousElementSibling.classList.remove("cancionActual");
-        nn.classList.add("cancionActual");
-        let musica = nn.querySelector("audio");
-        musica.currentTime = 0;
-        musica.play();
-        let cancion = nn.querySelector("p");
-        $artistSongTitle.textContent = cancion.textContent;
-        cancion.classList.add("active__name");
-        nn.classList.remove("next");
+      if (el.classList.contains("next")) {
+        el.previousElementSibling.classList.remove("currentSong");
+        el.classList.add("currentSong");
+        let audio = el.querySelector("audio");
+        audio.currentTime = 0;
+        audio.play();
+        let song = el.querySelector("p");
+        $artistSongTitle.textContent = song.textContent;
+        song.classList.add("active__name");
+        el.classList.remove("next");
       }
     });
   })
 });
 
-//Si se clickea en un elemento no tan visible se scrollea 52pixeles
+//If you click on an element that is not so visible, it scrolls 52 pixels
 $playlist.addEventListener("click", (e) => {
-  let tamanioPantalla = window.innerHeight - 52;
+  let screenSize = window.innerHeight - 52;
   
   if (e.clientY < 230){
     $playlist.scrollBy(0, -52);
   }
-  if (e.clientY > tamanioPantalla) {
+  if (e.clientY > screenSize) {
     $playlist.scrollBy(0, 52);
   }
 })

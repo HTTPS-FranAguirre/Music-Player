@@ -29,8 +29,8 @@ img {
 
 input[type="range"] {
   width: 100%;
-  background: #000000;
   border-radius: 20px 0;
+  background: #000000;
   height: 16px;
   
   -webkit-appearance: none;
@@ -39,6 +39,8 @@ input[type="range"] {
 input[type="range"]:focus {
   outline: none;
 }
+
+/* Webkit */
 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 16px;
@@ -50,18 +52,14 @@ input[type="range"]::-webkit-slider-thumb {
   border-bottom: 2px solid rgba(255, 38, 0);
   border-right: 4px solid rgba(255, 38, 0);
   background-color: rgba(255, 38, 0);
-  height: 16px;
+  height: 15px;
   width: 10px;
   border-radius: 20px 0;
   cursor: pointer;
   -webkit-appearance: none;
 }
-/* Pone en blanco cuando se le hace focus */
-/* input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: #ffffff;
-} */
 
-/* Configuración para mozilla Firefox */
+/* Firefox */
 input[type="range"]::-moz-range-track {
   width: 100%;
   height: 16px;
@@ -71,19 +69,17 @@ input[type="range"]::-moz-range-track {
   box-shadow: 3px 3px 5px rgba(255, 38, 0);
 }
 input[type="range"]::-moz-range-thumb {
-  border: #000000;
-  border-bottom: 2px solid rgba(255, 38, 0);
-  border-right: 4px solid rgba(255, 38, 0);
-  background-color: #000000;
-  height: 15px;
-  width: 10px;
-  border-radius: 20px 0;
+  border: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
   appearance: none;
 }
 
 input[type="range"]::-moz-range-progress {
-  background: red;
+  border-radius: 20px 0;
+  background: orangered;
+  height: 16px;
+
 }
 
 .head {
@@ -121,7 +117,6 @@ input[type="range"]::-moz-range-progress {
   z-index: 9;
   font-size: 100%;
   font-family: "Black Ops One", sans-serif;
-  /* La primera es izquierda-derecha, segunda es arriba-abajo */
   text-shadow: 0px 13px 7px rgb(255, 38, 0), 0px -1px 1px rgb(255, 38, 0),
     1px 0px 1px rgb(255, 38, 0), -1px 0px 1px rgb(255, 38, 0);
 }
@@ -199,7 +194,7 @@ svg {
   align-items: center;
 }
 
-/* RANGO */
+/* RANGE */
 
 /* playlist */
 .playlist {
@@ -215,18 +210,18 @@ svg {
 /* playlist scrollbar */
 
 .playlist::-webkit-scrollbar-track {
-  background-color: transparent; /*  color de la barra de fondo  */
+  background-color: transparent;
 }
 .playlist::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 38, 0); /*color del manejador*/
-  border-radius: 10px; /* redondear los border del scroll */
+  background-color: rgba(255, 38, 0);
+  border-radius: 10px;
 }
 .playlist::-webkit-scrollbar {
-  width: 8px; /*ancho del scroll vertical*/
-  height: 16px; /*alto del scroll horizontal*/
+  width: 8px;
+  height: 16px;
 }
 
-/* Personalización para firefox */
+/* playlist scrollbar - firefox */
 
 .playlist {
   scrollbar-width: thin;
@@ -251,6 +246,6 @@ svg {
   color: #000000;
 }
 
-.cancionActual {
+.currentSong {
   background-color: rgb(255, 38, 0);
 }
