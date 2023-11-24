@@ -348,18 +348,18 @@ $playlist.addEventListener("click", (e) => {
   }
 })
 
-const $colorClick = d.querySelector(".colorActual");
-// console.log($colorClick);
+const $clickedColor = d.querySelector(".head__current-color");
+// console.log($clickedColor);
 
-$colorClick.addEventListener("input", (e) => {
-  let co = e.target.value;
+$clickedColor.addEventListener("input", (e) => {
+  let changedColor = e.target.value;
   const $html = document.documentElement;
-  $html.style.setProperty("--color", `${co}`)
+  $html.style.setProperty("--color", changedColor)
 })
 
-  $colorClick.addEventListener("change", (e) => {
-    let cambioColor =  e.target.value;
-    localStorage.setItem("color", cambioColor)
+  $clickedColor.addEventListener("change", (e) => {
+    let changedColor = e.target.value;
+    localStorage.setItem("color", changedColor)
   })
 
 d.addEventListener("DOMContentLoaded", () => {
