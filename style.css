@@ -254,17 +254,6 @@ svg {
   background-color: var(--color);
 }
 
-.head__paint-storage {
-  position: relative;
-}
-
-.head__current-color {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  opacity: 0;
+label {
   cursor: pointer;
-}
-
-.head__choose-paint {
 }
