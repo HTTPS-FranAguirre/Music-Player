@@ -425,10 +425,11 @@ $song.forEach((playing) => {
     $headCurrentSongTimeReal.textContent = timeNow;
 
     const $color = document.documentElement.style.getPropertyValue("--color");
+
     if ($color === "") {
-      $range.style.background = `linear-gradient(to right, rgb(0 233 255) ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
+      $range.style.background = `linear-gradient(90deg, rgb(0 233 255) ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
     }
-    $range.style.background = `linear-gradient(to right, ${$color} ${$range.min}%, black ${$range.value}%, black ${$range.max}% ), linear-gradient(to left, black ${$range.max}%, black ${$range.value}% )`;
+    $range.style.background = `linear-gradient( 90deg, ${$color} ${$range.min}%, rgb(0, 0, 0) ${$range.value}%, rgb(0, 0, 0) ${$range.max}% )`;
   });
   playing.addEventListener("ended", () => {
     $playlistSong.forEach((el) => {
