@@ -329,7 +329,7 @@ $playlist.addEventListener("click", (e) => {
         return Math.floor(Math.random() * (max - min) + min);
       }
       let number = getRandomInt(1, 21);
-      
+
       $playlistSong.forEach(function callback(currentValue, index) {
         let audio = $playlistSong[index].querySelector("audio");
         let $text = currentValue.querySelector("p");
@@ -428,7 +428,7 @@ $song.forEach((playing) => {
     if ($color === "") {
       $range.style.background = `linear-gradient(to right, rgb(0 233 255) ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
     }
-    $range.style.background = `linear-gradient(to right, ${$color} ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
+    $range.style.background = `linear-gradient(to right, ${$color} ${$range.min}%, black ${$range.value}%, black ${$range.max}% ), linear-gradient(to left, black ${$range.max}%, black ${$range.value}% )`;
   });
   playing.addEventListener("ended", () => {
     $playlistSong.forEach((el) => {
