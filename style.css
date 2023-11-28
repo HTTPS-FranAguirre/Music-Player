@@ -16,11 +16,10 @@ body {
 }
 
 p {
-  padding: 16px;
-  margin: 0;
   font-family: "IBM Plex Mono", monospace;
   cursor: pointer;
   width: 100%;
+  margin-left: 16px;
   color: var(--color);
   text-shadow: 0 0 10px var(--color);
 }
@@ -233,7 +232,6 @@ svg {
 }
 
 .playlist__song-container {
-  border-radius: 10px;
   display: flex;
   background: linear-gradient(
     0deg,
