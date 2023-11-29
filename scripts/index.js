@@ -49,9 +49,14 @@ $headChooseMusic.addEventListener("change", (e)=> {
   $song.forEach((playing) => {
     playing.addEventListener("play", (e) => {
       let currentAudio = e.target;
-      // console.log(currentAudio)
+
       // range control
-      $range.max = currentAudio.duration.toFixed();
+    $range.addEventListener("change", (e) => {
+      console.log(e.target.valueAsNumber);
+      let valor = (e.target.valueAsNumber/100)*currentAudio.duration.toFixed();
+      console.log(valor.toFixed());
+      currentAudio.currentTime = valor.toFixed();
+    })
   
       let checker = setInterval(() => {
         if (Number.isNaN(currentAudio.duration) === false) {
@@ -69,7 +74,6 @@ $headChooseMusic.addEventListener("change", (e)=> {
   
           let songDuration = `${minutesText}:${secondsText}`;
           $headCurrentSongTime.textContent = songDuration;
-          $range.max = currentAudio.duration.toFixed();
           clearInterval(checker);
         }
       }, 1000);
@@ -90,8 +94,8 @@ $headChooseMusic.addEventListener("change", (e)=> {
     playing.addEventListener("timeupdate", (e) => {
       let time = e.target.currentTime;
       $range.setAttribute("value", `${time.toFixed()}`);
-      $range.value = time;
-      let percentageOfMusic = (time/$range.max)*100;
+
+      let percentageOfMusic = (time/e.target.duration)*100;
       let percentageOfMusicInteger = percentageOfMusic.toFixed();
 
       let minutes = Math.floor(time / 60);
@@ -313,15 +317,6 @@ $buttonForward.addEventListener("click", () => {
   });
 });
 
-$range.addEventListener("change", (e) => {
-  $playlistSong.forEach((el) => {
-    if (el.classList.contains("currentSong")) {
-      let audio = el.querySelector("audio");
-      audio.currentTime = e.target.valueAsNumber
-    }
-  });
-})
-
 /* Reproductor de audio actual */
 
 $playlist.addEventListener("click", (e) => {
@@ -359,9 +354,15 @@ let $song = d.querySelectorAll("audio");
 $song.forEach((playing) => {
   playing.addEventListener("play", (e) => {
     let currentAudio = e.target;
-    // console.log(currentAudio)
     // range control
-    $range.max = currentAudio.duration.toFixed();
+
+    $range.addEventListener("change", (e) => {
+      console.log(e.target.valueAsNumber);
+      let valor = (e.target.valueAsNumber/100)*currentAudio.duration.toFixed();
+      console.log(valor.toFixed());
+      currentAudio.currentTime = valor.toFixed();
+    })
+    
 
     let checker = setInterval(() => {
       if (Number.isNaN(currentAudio.duration) === false) {
@@ -379,7 +380,6 @@ $song.forEach((playing) => {
 
         let songDuration = `${minutesText}:${secondsText}`;
         $headCurrentSongTime.textContent = songDuration;
-        $range.max = currentAudio.duration.toFixed();
         clearInterval(checker);
       }
     }, 1000);
@@ -399,10 +399,17 @@ $song.forEach((playing) => {
 
   playing.addEventListener("timeupdate", (e) => {
     let time = e.target.currentTime;
-    $range.setAttribute("value", `${time.toFixed()}`);
-    $range.value = time;
-    let percentageOfMusic = (time/$range.max)*100;
+    
+    let percentageOfMusic = (time/e.target.duration)*100;
     let percentageOfMusicInteger = percentageOfMusic.toFixed();
+
+    $range.setAttribute("value", `${percentageOfMusicInteger}`);
+    //Aparece un monton de duraciones, filtrar por actual , puede ser este el problema
+    console.log(e.target.duration)
+    // if (!e.target.duration){
+    //   console.log("Hola")
+    //   // $range.value = percentageOfMusicInteger;
+    // }
 
     let minutes = Math.floor(time / 60);
     let seconds = Math.floor(time % 60);
