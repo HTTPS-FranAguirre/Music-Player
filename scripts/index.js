@@ -53,15 +53,11 @@ $headChooseMusic.addEventListener("change", (e)=> {
       // range control
       $range.max = currentAudio.duration.toFixed();
   
-      $range.addEventListener("touchend", (e) => {
+      $range.addEventListener("change", (e) => {
+        console.log("cambio");
         currentAudio.currentTime = e.target.valueAsNumber;
         currentAudio.currentTime === $range.value;
-      });
-  
-      $range.addEventListener("click", (e) => {
-        currentAudio.currentTime = e.target.valueAsNumber;
-        currentAudio.currentTime === $range.value;
-      });
+      })
   
       let checker = setInterval(() => {
         if (Number.isNaN(currentAudio.duration) === false) {
@@ -101,8 +97,8 @@ $headChooseMusic.addEventListener("change", (e)=> {
       let time = e.target.currentTime;
       $range.setAttribute("value", `${time.toFixed()}`);
       $range.value = time;
-      let valor = (time/$range.max)*100;
-      let valor2 = valor.toFixed();
+      let percentageOfMusic = (time/$range.max)*100;
+      let percentageOfMusicInteger = percentageOfMusic.toFixed();
 
       let minutes = Math.floor(time / 60);
       let seconds = Math.floor(time % 60);
@@ -123,9 +119,9 @@ $headChooseMusic.addEventListener("change", (e)=> {
   
       const $color = document.documentElement.style.getPropertyValue("--color");
       if ($color === "") {
-        $range.style.background = `linear-gradient(to right, rgb(0 233 255) 0%, black ${valor2}%, black 100% )`;
+        $range.style.background = `linear-gradient(to right, rgb(0 233 255) 0%, black ${percentageOfMusicInteger}%, black 100% )`;
       }
-      $range.style.background = `linear-gradient(to right, ${$color} 0%, black ${valor2}%, black 100% )`;
+      $range.style.background = `linear-gradient(to right, ${$color} 0%, black ${percentageOfMusicInteger}%, black 100% )`;
     });
     playing.addEventListener("ended", () => {
       $playlistSong.forEach((el) => {
@@ -135,7 +131,9 @@ $headChooseMusic.addEventListener("change", (e)=> {
           audio.currentTime = 0;
           let song = el.querySelector("p");
           song.classList.remove("active__name");
-          el.nextElementSibling.classList.add("next");
+          if (el.nextElementSibling !== null){
+            el.nextElementSibling.classList.add("next");
+          }
         }
         if (el.classList.contains("next")) {
           el.previousElementSibling.classList.remove("currentSong");
@@ -362,15 +360,11 @@ $song.forEach((playing) => {
     // range control
     $range.max = currentAudio.duration.toFixed();
 
-    $range.addEventListener("touchend", (e) => {
+    $range.addEventListener("change", (e) => {
+      console.log("cambio");
       currentAudio.currentTime = e.target.valueAsNumber;
       currentAudio.currentTime === $range.value;
-    });
-
-    $range.addEventListener("click", (e) => {
-      currentAudio.currentTime = e.target.valueAsNumber;
-      currentAudio.currentTime === $range.value;
-    });
+    })
 
     let checker = setInterval(() => {
       if (Number.isNaN(currentAudio.duration) === false) {
@@ -410,8 +404,8 @@ $song.forEach((playing) => {
     let time = e.target.currentTime;
     $range.setAttribute("value", `${time.toFixed()}`);
     $range.value = time;
-    let valor = (time/$range.max)*100;
-    let valor2 = valor.toFixed();
+    let percentageOfMusic = (time/$range.max)*100;
+    let percentageOfMusicInteger = percentageOfMusic.toFixed();
 
     let minutes = Math.floor(time / 60);
     let seconds = Math.floor(time % 60);
@@ -433,9 +427,9 @@ $song.forEach((playing) => {
     const $color = document.documentElement.style.getPropertyValue("--color");
 
     if ($color === "") {
-      $range.style.background = `linear-gradient(90deg, rgb(0 233 255) 0%, black ${valor2}%, black 100% )`;
+      $range.style.background = `linear-gradient(90deg, rgb(0 233 255) 0%, black ${percentageOfMusicInteger}%, black 100% )`;
     }
-    $range.style.background = `linear-gradient( 90deg, ${$color} 0%, rgb(0, 0, 0) ${valor2}%, rgb(0, 0, 0) 100% )`;
+    $range.style.background = `linear-gradient( 90deg, ${$color} 0%, black ${percentageOfMusicInteger}%, rgb(0, 0, 0) 100% )`;
   });
   playing.addEventListener("ended", () => {
     $playlistSong.forEach((el) => {
@@ -445,7 +439,9 @@ $song.forEach((playing) => {
         audio.currentTime = 0;
         let song = el.querySelector("p");
         song.classList.remove("active__name");
-        el.nextElementSibling.classList.add("next");
+        if (el.nextElementSibling !== null){
+          el.nextElementSibling.classList.add("next");
+        }
       }
       if (el.classList.contains("next")) {
         el.previousElementSibling.classList.remove("currentSong");
