@@ -51,7 +51,7 @@ $headChooseMusic.addEventListener("change", (e)=> {
       let currentAudio = e.target;
       // console.log(currentAudio)
       // range control
-      $range.max = currentAudio.duration;
+      $range.max = currentAudio.duration.toFixed();
   
       $range.addEventListener("touchend", (e) => {
         currentAudio.currentTime = e.target.valueAsNumber;
@@ -79,7 +79,7 @@ $headChooseMusic.addEventListener("change", (e)=> {
   
           let songDuration = `${minutesText}:${secondsText}`;
           $headCurrentSongTime.textContent = songDuration;
-          $range.max = currentAudio.duration;
+          $range.max = currentAudio.duration.toFixed();
           clearInterval(checker);
         }
       }, 1000);
@@ -99,8 +99,11 @@ $headChooseMusic.addEventListener("change", (e)=> {
   
     playing.addEventListener("timeupdate", (e) => {
       let time = e.target.currentTime;
-      $range.setAttribute("value", `${time}`);
+      $range.setAttribute("value", `${time.toFixed()}`);
       $range.value = time;
+      let valor = (time/$range.max)*100;
+      let valor2 = valor.toFixed();
+
       let minutes = Math.floor(time / 60);
       let seconds = Math.floor(time % 60);
       let minutesLength = minutes.toString();
@@ -120,9 +123,9 @@ $headChooseMusic.addEventListener("change", (e)=> {
   
       const $color = document.documentElement.style.getPropertyValue("--color");
       if ($color === "") {
-        $range.style.background = `linear-gradient(to right, rgb(0 233 255) ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
+        $range.style.background = `linear-gradient(to right, rgb(0 233 255) 0%, black ${valor2}%, black 100% )`;
       }
-      $range.style.background = `linear-gradient(to right, ${$color} ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
+      $range.style.background = `linear-gradient(to right, ${$color} 0%, black ${valor2}%, black 100% )`;
     });
     playing.addEventListener("ended", () => {
       $playlistSong.forEach((el) => {
@@ -357,7 +360,7 @@ $song.forEach((playing) => {
     let currentAudio = e.target;
     // console.log(currentAudio)
     // range control
-    $range.max = currentAudio.duration;
+    $range.max = currentAudio.duration.toFixed();
 
     $range.addEventListener("touchend", (e) => {
       currentAudio.currentTime = e.target.valueAsNumber;
@@ -385,7 +388,7 @@ $song.forEach((playing) => {
 
         let songDuration = `${minutesText}:${secondsText}`;
         $headCurrentSongTime.textContent = songDuration;
-        $range.max = currentAudio.duration;
+        $range.max = currentAudio.duration.toFixed();
         clearInterval(checker);
       }
     }, 1000);
@@ -405,8 +408,11 @@ $song.forEach((playing) => {
 
   playing.addEventListener("timeupdate", (e) => {
     let time = e.target.currentTime;
-    $range.setAttribute("value", `${time}`);
+    $range.setAttribute("value", `${time.toFixed()}`);
     $range.value = time;
+    let valor = (time/$range.max)*100;
+    let valor2 = valor.toFixed();
+
     let minutes = Math.floor(time / 60);
     let seconds = Math.floor(time % 60);
     let minutesLength = minutes.toString();
@@ -427,9 +433,9 @@ $song.forEach((playing) => {
     const $color = document.documentElement.style.getPropertyValue("--color");
 
     if ($color === "") {
-      $range.style.background = `linear-gradient(90deg, rgb(0 233 255) ${$range.min}%, black ${$range.value}%, black ${$range.max}% )`;
+      $range.style.background = `linear-gradient(90deg, rgb(0 233 255) 0%, black ${valor2}%, black 100% )`;
     }
-    $range.style.background = `linear-gradient( 90deg, ${$color} ${$range.min}%, rgb(0, 0, 0) ${$range.value}%, rgb(0, 0, 0) ${$range.max}% )`;
+    $range.style.background = `linear-gradient( 90deg, ${$color} 0%, rgb(0, 0, 0) ${valor2}%, rgb(0, 0, 0) 100% )`;
   });
   playing.addEventListener("ended", () => {
     $playlistSong.forEach((el) => {
