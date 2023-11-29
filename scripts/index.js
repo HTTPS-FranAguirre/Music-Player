@@ -53,12 +53,6 @@ $headChooseMusic.addEventListener("change", (e)=> {
       // range control
       $range.max = currentAudio.duration.toFixed();
   
-      $range.addEventListener("change", (e) => {
-        console.log("cambio");
-        currentAudio.currentTime = e.target.valueAsNumber;
-        currentAudio.currentTime === $range.value;
-      })
-  
       let checker = setInterval(() => {
         if (Number.isNaN(currentAudio.duration) === false) {
           let minutes = Math.floor(currentAudio.duration / 60);
@@ -319,6 +313,15 @@ $buttonForward.addEventListener("click", () => {
   });
 });
 
+$range.addEventListener("change", (e) => {
+  $playlistSong.forEach((el) => {
+    if (el.classList.contains("currentSong")) {
+      let audio = el.querySelector("audio");
+      audio.currentTime = e.target.valueAsNumber
+    }
+  });
+})
+
 /* Reproductor de audio actual */
 
 $playlist.addEventListener("click", (e) => {
@@ -359,12 +362,6 @@ $song.forEach((playing) => {
     // console.log(currentAudio)
     // range control
     $range.max = currentAudio.duration.toFixed();
-
-    $range.addEventListener("change", (e) => {
-      console.log("cambio");
-      currentAudio.currentTime = e.target.valueAsNumber;
-      currentAudio.currentTime === $range.value;
-    })
 
     let checker = setInterval(() => {
       if (Number.isNaN(currentAudio.duration) === false) {

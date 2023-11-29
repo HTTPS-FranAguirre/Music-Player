@@ -115,7 +115,7 @@ input[type="range"]::-moz-range-progress {
 }
 
 .head__tools {
-  margin-left: 6px;
+  margin-left: 3px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
