@@ -51,12 +51,10 @@ $headChooseMusic.addEventListener("change", (e)=> {
       let currentAudio = e.target;
 
       // range control
-    $range.addEventListener("change", (e) => {
-      console.log(e.target.valueAsNumber);
-      let valor = (e.target.valueAsNumber/100)*currentAudio.duration.toFixed();
-      console.log(valor.toFixed());
-      currentAudio.currentTime = valor.toFixed();
-    })
+      $range.addEventListener("input", (e) => {
+        let gettingAudioTime = (e.target.valueAsNumber/100)*currentAudio.duration;
+        currentAudio.currentTime = gettingAudioTime;
+      })  
   
       let checker = setInterval(() => {
         if (Number.isNaN(currentAudio.duration) === false) {
@@ -92,34 +90,39 @@ $headChooseMusic.addEventListener("change", (e)=> {
     });
   
     playing.addEventListener("timeupdate", (e) => {
-      let time = e.target.currentTime;
-      $range.setAttribute("value", `${time.toFixed()}`);
-
-      let percentageOfMusic = (time/e.target.duration)*100;
-      let percentageOfMusicInteger = percentageOfMusic.toFixed();
-
-      let minutes = Math.floor(time / 60);
-      let seconds = Math.floor(time % 60);
-      let minutesLength = minutes.toString();
-      let secondsLength = seconds.toString();
+      if (playing.classList.contains("active__audio")){
+        let time = e.target.currentTime;
+        
+        let percentageOfMusic = (time/e.target.duration)*100;
+        let percentageOfMusicInteger = percentageOfMusic.toFixed();
   
-      if (secondsLength.length < 2) {
-        secondsLength = `0${seconds}`;
+        $range.setAttribute("value", `${percentageOfMusicInteger}`);
+        $range.value = percentageOfMusic;
+        
+        let minutes = Math.floor(time / 60);
+        let seconds = Math.floor(time % 60);
+        let minutesLength = minutes.toString();
+        let secondsLength = seconds.toString();
+    
+        if (secondsLength.length < 2) {
+          secondsLength = `0${seconds}`;
+        }
+    
+        if (minutesLength.length < 2) {
+          minutesLength = `0${minutes}`;
+        }
+    
+        let timeNow = `${minutesLength}:${secondsLength}`;
+    
+        $headCurrentSongTimeReal.textContent = timeNow;
+    
+        const $color = document.documentElement.style.getPropertyValue("--color");
+    
+        if ($color === "") {
+          $range.style.background = `linear-gradient(90deg, rgb(0 233 255) 0%, black ${percentageOfMusicInteger}%, black 100% )`;
+        }
+        $range.style.background = `linear-gradient( 90deg, ${$color} 0%, black ${percentageOfMusicInteger}%, rgb(0, 0, 0) 100% )`;
       }
-  
-      if (minutesLength.length < 2) {
-        minutesLength = `0${minutes}`;
-      }
-  
-      let timeNow = `${minutesLength}:${secondsLength}`;
-  
-      $headCurrentSongTimeReal.textContent = timeNow;
-  
-      const $color = document.documentElement.style.getPropertyValue("--color");
-      if ($color === "") {
-        $range.style.background = `linear-gradient(to right, rgb(0 233 255) 0%, black ${percentageOfMusicInteger}%, black 100% )`;
-      }
-      $range.style.background = `linear-gradient(to right, ${$color} 0%, black ${percentageOfMusicInteger}%, black 100% )`;
     });
     playing.addEventListener("ended", () => {
       $playlistSong.forEach((el) => {
@@ -336,12 +339,14 @@ $playlist.addEventListener("click", (e) => {
       $artistSongTitle.textContent = $text.textContent;
       $playlistSong[index].classList.add("currentSong");
       $playlistSongName[index].classList.add("active__name");
+      audio.classList.add("active__audio");
       audio.currentTime = 0;
       audio.play();
       $headArtistPhoto.src = `./images/${number}.jpg`;
     } else {
       $playlistSong[index].classList.remove("currentSong");
       $playlistSongName[index].classList.remove("active__name");
+      audio.classList.remove("active__audio");
       audio.pause();
       audio.currentTime = 0;
     }
@@ -354,14 +359,12 @@ let $song = d.querySelectorAll("audio");
 $song.forEach((playing) => {
   playing.addEventListener("play", (e) => {
     let currentAudio = e.target;
-    // range control
 
-    $range.addEventListener("change", (e) => {
-      console.log(e.target.valueAsNumber);
-      let valor = (e.target.valueAsNumber/100)*currentAudio.duration.toFixed();
-      console.log(valor.toFixed());
-      currentAudio.currentTime = valor.toFixed();
-    })
+    // range control
+    $range.addEventListener("input", (e) => {
+      let gettingAudioTime = (e.target.valueAsNumber/100)*currentAudio.duration;
+      currentAudio.currentTime = gettingAudioTime;
+    })  
     
 
     let checker = setInterval(() => {
@@ -398,42 +401,42 @@ $song.forEach((playing) => {
   });
 
   playing.addEventListener("timeupdate", (e) => {
-    let time = e.target.currentTime;
-    
-    let percentageOfMusic = (time/e.target.duration)*100;
-    let percentageOfMusicInteger = percentageOfMusic.toFixed();
 
-    $range.setAttribute("value", `${percentageOfMusicInteger}`);
-    //Aparece un monton de duraciones, filtrar por actual , puede ser este el problema
-    console.log(e.target.duration)
-    // if (!e.target.duration){
-    //   console.log("Hola")
-    //   // $range.value = percentageOfMusicInteger;
-    // }
+    if (playing.classList.contains("active__audio")){
+      // console.log(e.target.currentTime)
+      let time = e.target.currentTime;
+      let percentageOfMusic = (time/e.target.duration)*100;
+      let percentageOfMusicInteger = percentageOfMusic.toFixed();
 
-    let minutes = Math.floor(time / 60);
-    let seconds = Math.floor(time % 60);
-    let minutesLength = minutes.toString();
-    let secondsLength = seconds.toString();
+      $range.value = percentageOfMusic;
+      $range.setAttribute("value", `${percentageOfMusicInteger}`);
+      
+      let minutes = Math.floor(time / 60);
+      let seconds = Math.floor(time % 60);
+      let minutesLength = minutes.toString();
+      let secondsLength = seconds.toString();
+  
+      if (secondsLength.length < 2) {
+        secondsLength = `0${seconds}`;
+      }
+  
+      if (minutesLength.length < 2) {
+        minutesLength = `0${minutes}`;
+      }
+  
+      let timeNow = `${minutesLength}:${secondsLength}`;
+  
+      $headCurrentSongTimeReal.textContent = timeNow;
+  
+      const $color = document.documentElement.style.getPropertyValue("--color");
+  
+      if ($color === "") {
+        $range.style.background = `linear-gradient(90deg, rgb(0 233 255) 0%, black ${percentageOfMusicInteger}%, black 100% )`;
+      }
+      $range.style.background = `linear-gradient( 90deg, ${$color} 0%, black ${percentageOfMusicInteger}%, rgb(0, 0, 0) 100% )`;
 
-    if (secondsLength.length < 2) {
-      secondsLength = `0${seconds}`;
     }
 
-    if (minutesLength.length < 2) {
-      minutesLength = `0${minutes}`;
-    }
-
-    let timeNow = `${minutesLength}:${secondsLength}`;
-
-    $headCurrentSongTimeReal.textContent = timeNow;
-
-    const $color = document.documentElement.style.getPropertyValue("--color");
-
-    if ($color === "") {
-      $range.style.background = `linear-gradient(90deg, rgb(0 233 255) 0%, black ${percentageOfMusicInteger}%, black 100% )`;
-    }
-    $range.style.background = `linear-gradient( 90deg, ${$color} 0%, black ${percentageOfMusicInteger}%, rgb(0, 0, 0) 100% )`;
   });
   playing.addEventListener("ended", () => {
     $playlistSong.forEach((el) => {
