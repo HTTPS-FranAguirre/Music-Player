@@ -1,17 +1,17 @@
 export default function song() {
     const d = document;
     const $playlist = d.querySelector(".playlist");
-    let $playlistSong = d.querySelectorAll(".playlist__song-container");
-    const $artistSongTitle = d.querySelector(".head__artist-song-title p");
     const $range = d.querySelector(".range");
     const $headCurrentSongTimeReal = d.querySelector(
-        ".head__current-song-time span:first-child"
+      ".head__current-song-time span:first-child"
       );
       const $headCurrentSongTime = d.querySelector(
         ".head__current-song-time span:last-child"
       );
     let $song = d.querySelectorAll("audio");
     $playlist.addEventListener("click", () => {
+      let $playlistSong = d.querySelectorAll(".playlist__song-container");
+      const $artistSongTitle = d.querySelector(".head__artist-song-title p");
     
       $song = d.querySelectorAll("audio");
       $song.forEach((playing) => {
