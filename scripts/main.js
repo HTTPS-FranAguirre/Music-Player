@@ -17,7 +17,7 @@ let $playlistSongName = d.querySelectorAll(".playlist__song-container p");
 const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
 const $range = d.querySelector(".range");
-
+// **********************************************************************************************
 const $headChooseMusic = d.querySelector(".head__choose-music");
 $headChooseMusic.addEventListener("change", (e)=> {
   // Barrer con los playlist predefinidos
@@ -29,11 +29,11 @@ $headChooseMusic.addEventListener("change", (e)=> {
   };
   for (let i = 0; i < fileLength; i++) {
     // console.log(e.target.files[i]);
-    $div = d.createElement("div");
+    let $div = d.createElement("div");
     $div.classList.add("playlist__song-container");
-    $text = d.createElement("p");
+    let $text = d.createElement("p");
     $text.innerHTML = `${e.target.files[i].name}`
-    $audio = d.createElement("audio");
+    let $audio = d.createElement("audio");
     $audio.src = URL.createObjectURL(e.target.files[i]);
     $audio.setAttribute("rel", "preload");
     $div.appendChild($text)
@@ -149,6 +149,8 @@ $headChooseMusic.addEventListener("change", (e)=> {
     });
   });
 })
+// **********************************************************************************************
+
 // **********************************************************************************************
 /* Dynamic creation of "src" in "audio" tags */
 // Playlist por defecto
