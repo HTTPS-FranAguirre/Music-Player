@@ -18,8 +18,6 @@ const $artistSongTitle = d.querySelector(".head__artist-song-title p");
 
 const $range = d.querySelector(".range");
 
-const $buttonToggle = d.querySelector(".button-toggle");
-
 const $headChooseMusic = d.querySelector(".head__choose-music");
 $headChooseMusic.addEventListener("change", (e)=> {
   // Barrer con los playlist predefinidos
@@ -151,45 +149,7 @@ $headChooseMusic.addEventListener("change", (e)=> {
     });
   });
 })
-
-$buttonToggle.addEventListener("click", () => {
-  $buttonToggle.classList.toggle("pause");
-  if (!$buttonToggle.classList.contains("pause")) {
-    $playlistSong.forEach((el) => {
-      if (el.classList.contains("currentSong")) {
-        let audio = el.querySelector("audio");
-        audio.play();
-      }
-    });
-    $buttonToggle.innerHTML = `<svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="1.5em"
-    viewBox="0 0 320 512"
-  >
-    <path
-      d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"
-    />
-  </svg>`;
-  }
-  if ($buttonToggle.classList.contains("pause")) {
-    $playlistSong.forEach((el) => {
-      if (el.classList.contains("currentSong")) {
-        let audio = el.querySelector("audio");
-        audio.pause();
-      }
-    });
-    $buttonToggle.innerHTML = `<svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="1.5em"
-    viewBox="0 0 384 512"
-  >
-    <path
-      d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
-    />
-  </svg>`;
-  }
-});
-
+// **********************************************************************************************
 /* Dynamic creation of "src" in "audio" tags */
 // Playlist por defecto
 $playlistSong.forEach((el) => {
@@ -198,10 +158,13 @@ $playlistSong.forEach((el) => {
   $audio.setAttribute("src", `./songs/${$text}.mp3`);
   $audio.setAttribute("rel", "preload");
 });
+// **********************************************************************************************
 
+// ********************************* Buttons ************************************
 //Button control
 const $buttonSpeedControl = d.querySelector(".speed-control");
 const $buttonBackward = d.querySelector(".button-backward");
+const $buttonToggle = d.querySelector(".button-toggle");
 const $buttonStop = d.querySelector(".button-stop");
 const $buttonForward = d.querySelector(".button-forward");
 
@@ -269,6 +232,44 @@ $buttonBackward.addEventListener("click", () => {
   });
 });
 
+$buttonToggle.addEventListener("click", () => {
+  $buttonToggle.classList.toggle("pause");
+  if (!$buttonToggle.classList.contains("pause")) {
+    $playlistSong.forEach((el) => {
+      if (el.classList.contains("currentSong")) {
+        let audio = el.querySelector("audio");
+        audio.play();
+      }
+    });
+    $buttonToggle.innerHTML = `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="1.5em"
+    viewBox="0 0 320 512"
+  >
+    <path
+      d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"
+    />
+  </svg>`;
+  }
+  if ($buttonToggle.classList.contains("pause")) {
+    $playlistSong.forEach((el) => {
+      if (el.classList.contains("currentSong")) {
+        let audio = el.querySelector("audio");
+        audio.pause();
+      }
+    });
+    $buttonToggle.innerHTML = `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="1.5em"
+    viewBox="0 0 384 512"
+  >
+    <path
+      d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"
+    />
+  </svg>`;
+  }
+});
+
 $buttonStop.addEventListener("click", () => {
   $playlistSong.forEach((el) => {
     if (el.classList.contains("currentSong")) {
@@ -319,9 +320,10 @@ $buttonForward.addEventListener("click", () => {
     }
   });
 });
+// ********************************* Buttons ************************************
 
+// **********************************************************************************************
 /* Reproductor de audio actual */
-
 $playlist.addEventListener("click", (e) => {
   
   // Img random
@@ -352,10 +354,11 @@ $playlist.addEventListener("click", (e) => {
     }
   });
 });
+// **********************************************************************************************
 
+// **********************************************************************************************
 /* Song duration and current time */
 let $song = d.querySelectorAll("audio");
-
 $song.forEach((playing) => {
   playing.addEventListener("play", (e) => {
     let currentAudio = e.target;
@@ -464,7 +467,9 @@ $song.forEach((playing) => {
     });
   });
 });
+// **********************************************************************************************
 
+// **********************************************************************************************
 //If you click on an element that is not so visible, it scrolls 52 pixels
 $playlist.addEventListener("click", (e) => {
   let screenSize = window.innerHeight - 52;
@@ -476,7 +481,9 @@ $playlist.addEventListener("click", (e) => {
     $playlist.scrollBy(0, 52);
   }
 });
+// **********************************************************************************************
 
+// **********************************************************************************************
 const $clickedColor = d.querySelector(".head__current-color");
 // console.log($clickedColor);
 
@@ -493,7 +500,8 @@ $clickedColor.addEventListener("change", (e) => {
 
 d.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("color")) {
-    color = localStorage.getItem("color");
+    let color = localStorage.getItem("color");
     document.documentElement.style.setProperty("--color", color);
   }
 });
+// **********************************************************************************************
