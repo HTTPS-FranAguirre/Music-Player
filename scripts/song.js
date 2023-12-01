@@ -1,6 +1,8 @@
 export default function song() {
     const d = document;
     const $playlist = d.querySelector(".playlist");
+    let $playlistSong = d.querySelectorAll(".playlist__song-container");
+    const $artistSongTitle = d.querySelector(".head__artist-song-title p");
     const $range = d.querySelector(".range");
     const $headCurrentSongTimeReal = d.querySelector(
         ".head__current-song-time span:first-child"
@@ -102,6 +104,7 @@ export default function song() {
               audio.pause();
               audio.currentTime = 0;
               let song = el.querySelector("p");
+              audio.classList.remove("active__audio");
               song.classList.remove("active__name");
               if (el.nextElementSibling !== null){
                 el.nextElementSibling.classList.add("next");
@@ -114,6 +117,7 @@ export default function song() {
               audio.currentTime = 0;
               audio.play();
               let song = el.querySelector("p");
+              audio.classList.add("active__audio");
               $artistSongTitle.textContent = song.textContent;
               song.classList.add("active__name");
               el.classList.remove("next");

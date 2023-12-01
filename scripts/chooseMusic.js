@@ -5,7 +5,7 @@ export default function chooseMusic() {
     let $playlistSong = d.querySelectorAll(".playlist__song-container");
     const $headChooseMusic = d.querySelector(".head__choose-music");
     $headChooseMusic.addEventListener("change", (e)=> {
-      // Barrer con los playlist predefinidos
+      // delete the predefined playlist
       let fileLength = e.target.files.length;
       if (fileLength !== 0){
         $playlistSong.forEach((element) => {
@@ -13,7 +13,6 @@ export default function chooseMusic() {
         })
       };
       for (let i = 0; i < fileLength; i++) {
-        // console.log(e.target.files[i]);
         let $div = d.createElement("div");
         $div.classList.add("playlist__song-container");
         let $text = d.createElement("p");

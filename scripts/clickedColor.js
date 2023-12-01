@@ -1,6 +1,5 @@
 export default function clickedColor() {
     const $clickedColor = document.querySelector(".head__current-color");
-    // console.log($clickedColor);
     
     $clickedColor.addEventListener("input", (e) => {
       let changedColor = e.target.value;
