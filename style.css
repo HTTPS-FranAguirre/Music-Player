@@ -87,6 +87,7 @@ input[type="range"]::-moz-range-progress {
 
 .head {
   width: 100vw;
+  border-bottom: 2px solid var(--color);
   max-width: 500px;
   height: 28vh;
   max-height: 195px;

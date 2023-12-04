@@ -7,9 +7,9 @@ import screenSize from "./screenSize.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   chooseMusic();
-  song();
-  currentAudio();
   buttons();
+  currentAudio();
+  song();
   clickedColor();
   screenSize();
 });

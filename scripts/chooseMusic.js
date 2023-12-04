@@ -1,10 +1,13 @@
+import song from "./song.js";
 export default function chooseMusic() {
+  const $headChooseMusic = document.querySelector(".head__choose-music");
+  $headChooseMusic.addEventListener("change", (e)=> {
     const d = document;
-    const $playlist = d.querySelector(".playlist");
-    let $playlistSongName = d.querySelectorAll(".playlist__song-container p");
-    let $playlistSong = d.querySelectorAll(".playlist__song-container");
-    const $headChooseMusic = d.querySelector(".head__choose-music");
-    $headChooseMusic.addEventListener("change", (e)=> {
+    
+      const $playlist = d.querySelector(".playlist");
+        // let $playlistSongName = d.querySelectorAll(".playlist__song-container p");
+        let $playlistSong = d.querySelectorAll(".playlist__song-container");
+
       // delete the predefined playlist
       let fileLength = e.target.files.length;
       if (fileLength !== 0){
@@ -24,7 +27,6 @@ export default function chooseMusic() {
         $div.appendChild($audio)
         $playlist.appendChild($div)
       }
-      $playlistSong = d.querySelectorAll(".playlist__song-container");
-      $playlistSongName = d.querySelectorAll(".playlist__song-container p");
+      song();
     })
   }

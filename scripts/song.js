@@ -1,6 +1,5 @@
 export default function song() {
     const d = document;
-    const $playlist = d.querySelector(".playlist");
     const $range = d.querySelector(".range");
     const $headCurrentSongTimeReal = d.querySelector(
       ".head__current-song-time span:first-child"
@@ -9,7 +8,6 @@ export default function song() {
         ".head__current-song-time span:last-child"
       );
     let $song = d.querySelectorAll("audio");
-    $playlist.addEventListener("click", () => {
       let $playlistSong = d.querySelectorAll(".playlist__song-container");
       const $artistSongTitle = d.querySelector(".head__artist-song-title p");
     
@@ -60,7 +58,7 @@ export default function song() {
         });
       
         playing.addEventListener("timeupdate", (e) => {
-      
+
           if (playing.classList.contains("active__audio")){
             // console.log(e.target.currentTime)
             let time = e.target.currentTime;
@@ -98,8 +96,10 @@ export default function song() {
       
         });
         playing.addEventListener("ended", () => {
+
           $playlistSong.forEach((el) => {
             if (el.classList.contains("currentSong")) {
+              el.classList.add("aaaaaaaa");
               let audio = el.querySelector("audio");
               audio.pause();
               audio.currentTime = 0;
@@ -111,6 +111,8 @@ export default function song() {
               }
             }
             if (el.classList.contains("next")) {
+              //Crea 2 con los dos eventos, tengo que lograr que solo cree uno
+              // el.previousElementSibling.classList.remove("aaaaaaaa");
               el.previousElementSibling.classList.remove("currentSong");
               el.classList.add("currentSong");
               let audio = el.querySelector("audio");
@@ -125,5 +127,4 @@ export default function song() {
           });
         });
       });
-    })
   }

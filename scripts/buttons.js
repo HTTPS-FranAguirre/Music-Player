@@ -82,12 +82,26 @@ $buttonToggle.addEventListener("click", () => {
     $playlistSong = d.querySelectorAll(".playlist__song-container");
   $buttonToggle.classList.toggle("pause");
   if (!$buttonToggle.classList.contains("pause")) {
+    let almacen = [];
     $playlistSong.forEach((el) => {
       if (el.classList.contains("currentSong")) {
         let audio = el.querySelector("audio");
         audio.play();
       }
+      const ele = !el.classList.contains("currentSong");
+      if (ele){
+        almacen.push(el);
+      }
     });
+    if (almacen.length === $playlistSong.length){
+      $playlistSong[0].classList.add("currentSong");
+      let audio =  $playlistSong[0].querySelector("audio");
+      let text = $playlistSong[0].querySelector("p");
+      $artistSongTitle.textContent = text.textContent;
+      audio.classList.add("active__audio");
+      text.classList.add("active__name");
+      audio.play();
+    }
     $buttonToggle.innerHTML = `<svg
     xmlns="http://www.w3.org/2000/svg"
     height="1.5em"
