@@ -2,7 +2,7 @@ export default function buttons() {
 const d = document;
 let $playlist = d.querySelector(".playlist");
 let $playlistSong = d.querySelectorAll(".playlist__song-container");
-const $artistSongTitle = d.querySelector(".head__artist-song-title p");
+const $headArtistSongTitle = d.querySelector(".head__artist-song-title p");
 const $buttonSpeedControl = d.querySelector(".speed-control");
 const $buttonBackward = d.querySelector(".button-backward");
 const $buttonToggle = d.querySelector(".button-toggle");
@@ -70,7 +70,7 @@ $buttonBackward.addEventListener("click", () => {
       audio.currentTime = 0;
       audio.play();
       let song = el.querySelector("p");
-      $artistSongTitle.textContent = song.textContent;
+      $headArtistSongTitle.textContent = song.textContent;
       audio.classList.add("active__audio");
       song.classList.add("active__name");
       el.classList.remove("back");
@@ -97,7 +97,7 @@ $buttonToggle.addEventListener("click", () => {
       $playlistSong[0].classList.add("currentSong");
       let audio =  $playlistSong[0].querySelector("audio");
       let text = $playlistSong[0].querySelector("p");
-      $artistSongTitle.textContent = text.textContent;
+      $headArtistSongTitle.textContent = text.textContent;
       audio.classList.add("active__audio");
       text.classList.add("active__name");
       audio.play();
@@ -180,7 +180,7 @@ $buttonForward.addEventListener("click", () => {
       audio.play();
       let song = el.querySelector("p");
       audio.classList.add("active__audio");
-      $artistSongTitle.textContent = song.textContent;
+      $headArtistSongTitle.textContent = song.textContent;
       song.classList.add("active__name");
       el.classList.remove("next");
     }

@@ -4,7 +4,7 @@ export default function currentAudio() {
     $playlist.addEventListener("click", (e) => {
         let $playlistSong = d.querySelectorAll(".playlist__song-container");
         let $playlistSongName = d.querySelectorAll(".playlist__song-container p");
-        const $artistSongTitle = d.querySelector(".head__artist-song-title p");
+        const $headArtistSongTitle = d.querySelector(".head__artist-song-title p");
         const $headArtistPhoto = d.querySelector(".head__artist-photo img");
         // Img random
         function getRandomInt(min, max) {
@@ -18,7 +18,7 @@ export default function currentAudio() {
               let audio = $playlistSong[index].querySelector("audio");
               let $text = currentValue.querySelector("p");
               if (e.target === currentValue || e.target === $text) {
-            $artistSongTitle.textContent = $text.textContent;
+            $headArtistSongTitle.textContent = $text.textContent;
             $playlistSong[index].classList.add("currentSong");
             $playlistSongName[index].classList.add("active__name");
             audio.classList.add("active__audio");

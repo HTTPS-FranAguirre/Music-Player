@@ -9,7 +9,7 @@ export default function song() {
       );
     let $song = d.querySelectorAll("audio");
       let $playlistSong = d.querySelectorAll(".playlist__song-container");
-      const $artistSongTitle = d.querySelector(".head__artist-song-title p");
+      const $headArtistSongTitle = d.querySelector(".head__artist-song-title p");
     
       $song = d.querySelectorAll("audio");
       $song.forEach((playing) => {
@@ -120,7 +120,7 @@ export default function song() {
               audio.play();
               let song = el.querySelector("p");
               audio.classList.add("active__audio");
-              $artistSongTitle.textContent = song.textContent;
+              $headArtistSongTitle.textContent = song.textContent;
               song.classList.add("active__name");
               el.classList.remove("next");
             }
