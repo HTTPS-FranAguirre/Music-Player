@@ -4,11 +4,9 @@ let playlistSongCopy = $playlistSong;
 export default function chooseMusic() {
   const $headChooseMusic = document.querySelector(".head__choose-music");
   $headChooseMusic.addEventListener("change", (e)=> {
-    console.log(e);
     const d = document;
     const $playlist = d.querySelector(".playlist");
     let $playlistSong = d.querySelectorAll(".playlist__song-container");
-    console.log($playlistSong.length);
     const $buttonToggle = d.querySelector(".button-toggle");
     $buttonToggle.classList.add("pause");
     
@@ -46,7 +44,6 @@ export default function chooseMusic() {
 
       // delete the predefined playlist
       let fileLength = e.target.files.length;
-      console.log(fileLength);
       if (e.target.files.length !== 0){
         $playlistSong.forEach((element) => {
           $playlist.removeChild(element);
@@ -95,6 +92,7 @@ export default function chooseMusic() {
             if (playlistDefault.classList.contains("currentSong")){
               let text = playlistDefault.querySelector("p");
               let audio = playlistDefault.querySelector("audio");
+              audio.currentTime = 0;
               text.classList.remove("active__name");
               audio.classList.remove("active__audio");
               playlistDefault.classList.remove("currentSong");
