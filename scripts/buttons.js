@@ -3,6 +3,7 @@ const d = document;
 let $playlist = d.querySelector(".playlist");
 let $playlistSong = d.querySelectorAll(".playlist__song-container");
 const $headArtistSongTitle = d.querySelector(".head__artist-song-title p");
+const $headArtistPhoto = d.querySelector(".head__artist-photo img");
 const $buttonSpeedControl = d.querySelector(".speed-control");
 const $buttonBackward = d.querySelector(".button-backward");
 const $buttonToggle = d.querySelector(".button-toggle");
@@ -78,6 +79,14 @@ $buttonBackward.addEventListener("click", () => {
       $headArtistSongTitle.textContent = song.textContent;
       audio.classList.add("active__audio");
       song.classList.add("active__name");
+                    // Img random
+                    function getRandomInt(min, max) {
+                      min = Math.ceil(min);
+                      max = Math.floor(max);
+                      return Math.floor(Math.random() * (max - min) + min);
+                    }
+                    let number = getRandomInt(1, 21);
+                    $headArtistPhoto.src = `./images/${number}.jpg`;
       el.classList.remove("back");
     }
   });
@@ -192,7 +201,14 @@ $buttonForward.addEventListener("click", () => {
         $playlist.scrollBy(0, 52);
         clearTimeout(countDown);
       }, 750);
-      
+              // Img random
+              function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min) + min);
+              }
+              let number = getRandomInt(1, 21);
+              $headArtistPhoto.src = `./images/${number}.jpg`;
       el.classList.remove("next");
     }
   });
