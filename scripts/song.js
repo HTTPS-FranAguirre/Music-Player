@@ -1,5 +1,6 @@
 export default function song() {
     const d = document;
+    const $playlist = d.querySelector(".playlist");
     const $range = d.querySelector(".range");
     const $headCurrentSongTimeReal = d.querySelector(
       ".head__current-song-time span:first-child"
@@ -99,7 +100,6 @@ export default function song() {
 
           $playlistSong.forEach((el) => {
             if (el.classList.contains("currentSong")) {
-              el.classList.add("aaaaaaaa");
               let audio = el.querySelector("audio");
               audio.pause();
               audio.currentTime = 0;
@@ -111,8 +111,6 @@ export default function song() {
               }
             }
             if (el.classList.contains("next")) {
-              //Crea 2 con los dos eventos, tengo que lograr que solo cree uno
-              // el.previousElementSibling.classList.remove("aaaaaaaa");
               el.previousElementSibling.classList.remove("currentSong");
               el.classList.add("currentSong");
               let audio = el.querySelector("audio");
@@ -122,6 +120,12 @@ export default function song() {
               audio.classList.add("active__audio");
               $headArtistSongTitle.textContent = song.textContent;
               song.classList.add("active__name");
+              el.classList.add("scroll-animation");
+              let countDown = setTimeout(() => {
+                el.classList.remove("scroll-animation");
+                $playlist.scrollBy(0, 52);
+                clearTimeout(countDown);
+              }, 750);
               el.classList.remove("next");
             }
           });
