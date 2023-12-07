@@ -53,7 +53,6 @@ $buttonBackward.addEventListener("click", () => {
       song.classList.remove("active__name");
       if (!(el.previousElementSibling === null)) {
         el.previousElementSibling.classList.add("back");
-        $playlist.scrollBy(0, -52);
       } else {
         audio.classList.add("active__audio");
         song.classList.add("active__name");
@@ -64,6 +63,12 @@ $buttonBackward.addEventListener("click", () => {
   });
   $playlistSong.forEach((el) => {
     if (el.classList.contains("back")) {
+      el.classList.add("scroll-animation");
+      let countDown = setTimeout(() => {
+        el.classList.remove("scroll-animation");
+        $playlist.scrollBy(0, -52);
+        clearTimeout(countDown);
+      }, 750);
       el.nextElementSibling.classList.remove("currentSong");
       el.classList.add("currentSong");
       let audio = el.querySelector("audio");
@@ -164,7 +169,6 @@ $buttonForward.addEventListener("click", () => {
       song.classList.remove("active__name");
       if (!(el.nextElementSibling === null)) {
         el.nextElementSibling.classList.add("next");
-        $playlist.scrollBy(0, 52);
       } else {
         audio.classList.add("active__audio");
         song.classList.add("active__name");
@@ -182,6 +186,13 @@ $buttonForward.addEventListener("click", () => {
       audio.classList.add("active__audio");
       $headArtistSongTitle.textContent = song.textContent;
       song.classList.add("active__name");
+      el.classList.add("scroll-animation");
+      let countDown = setTimeout(() => {
+        el.classList.remove("scroll-animation");
+        $playlist.scrollBy(0, 52);
+        clearTimeout(countDown);
+      }, 750);
+      
       el.classList.remove("next");
     }
   });

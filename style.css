@@ -288,6 +288,21 @@ svg {
   }
 }
 
+.scroll-animation {
+  animation: scrollAnimation 500ms ease-in-out;
+}
+
+@keyframes scrollAnimation {
+  0%{
+    height: 94px;
+  }
+
+  100%{
+    height: 52px;
+  }
+}
+
+
 label {
   cursor: pointer;
 }
