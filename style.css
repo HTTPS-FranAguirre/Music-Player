@@ -229,6 +229,7 @@ svg {
   overflow: auto;
   border-radius: 10px;
   background-color: #161616;
+  scroll-behavior: smooth;
 }
 
 /* playlist scrollbar */
@@ -270,6 +271,21 @@ svg {
 
 .currentSong {
   background-color: var(--color);
+  animation: myAnimation 1.5s;
+}
+
+@keyframes myAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 label {
