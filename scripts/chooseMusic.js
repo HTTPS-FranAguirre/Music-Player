@@ -89,13 +89,13 @@ export default function chooseMusic() {
             let $div = d.createElement("div");
             $div = playlistDefault;
             $playlist.appendChild($div);
-            if (playlistDefault.classList.contains("currentSong")){
+            if (playlistDefault.classList.contains("current__song")){
               let text = playlistDefault.querySelector("p");
               let audio = playlistDefault.querySelector("audio");
               audio.currentTime = 0;
               text.classList.remove("active__name");
               audio.classList.remove("active__audio");
-              playlistDefault.classList.remove("currentSong");
+              playlistDefault.classList.remove("current__song");
             }
           })
           const $buttonToggle = d.querySelector(".button-toggle");

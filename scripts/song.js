@@ -99,7 +99,7 @@ export default function song() {
         playing.addEventListener("ended", () => {
 
           $playlistSong.forEach((el) => {
-            if (el.classList.contains("currentSong")) {
+            if (el.classList.contains("current__song")) {
               let audio = el.querySelector("audio");
               audio.pause();
               audio.currentTime = 0;
@@ -111,8 +111,8 @@ export default function song() {
               }
             }
             if (el.classList.contains("next")) {
-              el.previousElementSibling.classList.remove("currentSong");
-              el.classList.add("currentSong");
+              el.previousElementSibling.classList.remove("current__song");
+              el.classList.add("current__song");
               let audio = el.querySelector("audio");
               audio.currentTime = 0;
               audio.play();

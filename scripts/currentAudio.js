@@ -19,14 +19,14 @@ export default function currentAudio() {
               let $text = currentValue.querySelector("p");
               if (e.target === currentValue || e.target === $text) {
             $headArtistSongTitle.textContent = $text.textContent;
-            $playlistSong[index].classList.add("currentSong");
+            $playlistSong[index].classList.add("current__song");
             $playlistSongName[index].classList.add("active__name");
             audio.classList.add("active__audio");
             audio.currentTime = 0;
             audio.play();
             $headArtistPhoto.src = `./images/${number}.jpg`;
           } else {
-            $playlistSong[index].classList.remove("currentSong");
+            $playlistSong[index].classList.remove("current__song");
             $playlistSongName[index].classList.remove("active__name");
             audio.classList.remove("active__audio");
             audio.pause();

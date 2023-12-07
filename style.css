@@ -269,7 +269,7 @@ svg {
   font-weight: bold;
 }
 
-.currentSong {
+.current__song {
   background-color: var(--color);
   animation: myAnimation 1.5s;
 }
@@ -305,4 +305,21 @@ svg {
 
 label {
   cursor: pointer;
+}
+
+.scale {
+  animation: scale 2s;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

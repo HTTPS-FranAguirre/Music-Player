@@ -12,6 +12,11 @@ const $buttonForward = d.querySelector(".button-forward");
 
 let clickCounter = 2;
 $buttonSpeedControl.addEventListener("click", () => {
+  $buttonSpeedControl.classList.add("scale");
+  let countDown = setTimeout(() => {
+    $buttonSpeedControl.classList.remove("scale");
+    clearTimeout(countDown);
+  }, 2000)
     $playlistSong = d.querySelectorAll(".playlist__song-container");
   let text = $buttonSpeedControl.querySelector("p");
 
@@ -45,7 +50,7 @@ $buttonSpeedControl.addEventListener("click", () => {
 $buttonBackward.addEventListener("click", () => {
     $playlistSong = d.querySelectorAll(".playlist__song-container");
   $playlistSong.forEach((el) => {
-    if (el.classList.contains("currentSong")) {
+    if (el.classList.contains("current__song")) {
       let audio = el.querySelector("audio");
       audio.pause();
       audio.currentTime = 0;
@@ -70,8 +75,8 @@ $buttonBackward.addEventListener("click", () => {
         $playlist.scrollBy(0, -52);
         clearTimeout(countDown);
       }, 750);
-      el.nextElementSibling.classList.remove("currentSong");
-      el.classList.add("currentSong");
+      el.nextElementSibling.classList.remove("current__song");
+      el.classList.add("current__song");
       let audio = el.querySelector("audio");
       audio.currentTime = 0;
       audio.play();
@@ -98,17 +103,17 @@ $buttonToggle.addEventListener("click", () => {
   if (!$buttonToggle.classList.contains("pause")) {
     let almacen = [];
     $playlistSong.forEach((el) => {
-      if (el.classList.contains("currentSong")) {
+      if (el.classList.contains("current__song")) {
         let audio = el.querySelector("audio");
         audio.play();
       }
-      const ele = !el.classList.contains("currentSong");
+      const ele = !el.classList.contains("current__song");
       if (ele){
         almacen.push(el);
       }
     });
     if (almacen.length === $playlistSong.length){
-      $playlistSong[0].classList.add("currentSong");
+      $playlistSong[0].classList.add("current__song");
       let audio =  $playlistSong[0].querySelector("audio");
       let text = $playlistSong[0].querySelector("p");
       $headArtistSongTitle.textContent = text.textContent;
@@ -128,7 +133,7 @@ $buttonToggle.addEventListener("click", () => {
   }
   if ($buttonToggle.classList.contains("pause")) {
     $playlistSong.forEach((el) => {
-      if (el.classList.contains("currentSong")) {
+      if (el.classList.contains("current__song")) {
         let audio = el.querySelector("audio");
         audio.pause();
       }
@@ -148,7 +153,7 @@ $buttonToggle.addEventListener("click", () => {
 $buttonStop.addEventListener("click", () => {
     $playlistSong = d.querySelectorAll(".playlist__song-container");
   $playlistSong.forEach((el) => {
-    if (el.classList.contains("currentSong")) {
+    if (el.classList.contains("current__song")) {
       let audio = el.querySelector("audio");
       audio.pause();
       audio.currentTime = 0;
@@ -169,7 +174,7 @@ $buttonStop.addEventListener("click", () => {
 $buttonForward.addEventListener("click", () => {
     $playlistSong = d.querySelectorAll(".playlist__song-container");
   $playlistSong.forEach((el) => {
-    if (el.classList.contains("currentSong")) {
+    if (el.classList.contains("current__song")) {
       let audio = el.querySelector("audio");
       audio.pause();
       audio.currentTime = 0;
@@ -186,8 +191,8 @@ $buttonForward.addEventListener("click", () => {
       }
     }
     if (el.classList.contains("next")) {
-      el.previousElementSibling.classList.remove("currentSong");
-      el.classList.add("currentSong");
+      el.previousElementSibling.classList.remove("current__song");
+      el.classList.add("current__song");
       let audio = el.querySelector("audio");
       audio.currentTime = 0;
       audio.play();
