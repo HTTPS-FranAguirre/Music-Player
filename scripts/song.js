@@ -61,7 +61,6 @@ export default function song() {
         playing.addEventListener("timeupdate", (e) => {
 
           if (playing.classList.contains("active__audio")){
-            // console.log(e.target.currentTime)
             let time = e.target.currentTime;
             let percentageOfMusic = (time/e.target.duration)*100;
             let percentageOfMusicInteger = percentageOfMusic.toFixed();

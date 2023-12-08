@@ -19,7 +19,6 @@ $buttonSpeedControl.addEventListener("click", () => {
   }, 2000)
     $playlistSong = d.querySelectorAll(".playlist__song-container");
   let text = $buttonSpeedControl.querySelector("p");
-
   clickCounter++;
 
   $playlistSong.forEach((el) => {

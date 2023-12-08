@@ -1,4 +1,5 @@
 import song from "./song.js";
+import buttons from "./buttons.js";
 let $playlistSong = document.querySelectorAll(".playlist__song-container");
 let playlistSongCopy = $playlistSong;
 export default function chooseMusic() {
@@ -7,6 +8,7 @@ export default function chooseMusic() {
     const d = document;
     const $playlist = d.querySelector(".playlist");
     let $playlistSong = d.querySelectorAll(".playlist__song-container");
+    const $buttonSpeedControl = d.querySelector(".speed-control");
     const $buttonToggle = d.querySelector(".button-toggle");
     $buttonToggle.classList.add("pause");
     
@@ -40,7 +42,13 @@ export default function chooseMusic() {
       const $headArtistSongTitle = d.querySelector(".head__artist-song-title p");
       $headArtistSongTitle.textContent = "";
 
-        // let $playlistSongName = d.querySelectorAll(".playlist__song-container p");
+      let text = $buttonSpeedControl.querySelector("p");
+
+      $playlistSong.forEach((el) => {
+        let audio = el.querySelector("audio");
+        audio.playbackRate = 1;
+        text.innerHTML = 1;
+      });
 
       // delete the predefined playlist
       let fileLength = e.target.files.length;
@@ -134,6 +142,15 @@ export default function chooseMusic() {
               $headChooseMusic.value = "";
 
               let $playlistDefault = d.querySelector(".playlist__default");
+
+              let text = $buttonSpeedControl.querySelector("p");
+              text.textContent = "1";
+        
+              $playlistSong.forEach((el) => {
+                let audio = el.querySelector("audio");
+                audio.playbackRate = 1;
+                text.innerHTML = 1;
+              });
               $playlistDefault.remove();
         });
       }
