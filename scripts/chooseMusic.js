@@ -1,5 +1,4 @@
 import song from "./song.js";
-import buttons from "./buttons.js";
 let $playlistSong = document.querySelectorAll(".playlist__song-container");
 let playlistSongCopy = $playlistSong;
 export default function chooseMusic() {
@@ -144,7 +143,7 @@ export default function chooseMusic() {
               $headChooseMusic.value = "";
 
               let $playlistDefault = d.querySelector(".playlist__default");
-              
+
               $playlistDefault.remove();
         });
       }
