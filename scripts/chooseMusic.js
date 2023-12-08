@@ -9,6 +9,8 @@ export default function chooseMusic() {
     const $playlist = d.querySelector(".playlist");
     let $playlistSong = d.querySelectorAll(".playlist__song-container");
     const $buttonSpeedControl = d.querySelector(".speed-control");
+    let textSpeedControl = $buttonSpeedControl.querySelector("p").textContent;
+
     const $buttonToggle = d.querySelector(".button-toggle");
     $buttonToggle.classList.add("pause");
     
@@ -42,13 +44,7 @@ export default function chooseMusic() {
       const $headArtistSongTitle = d.querySelector(".head__artist-song-title p");
       $headArtistSongTitle.textContent = "";
 
-      let text = $buttonSpeedControl.querySelector("p");
-
-      $playlistSong.forEach((el) => {
-        let audio = el.querySelector("audio");
-        audio.playbackRate = 1;
-        text.innerHTML = 1;
-      });
+      let textSpeedControlToNumber = parseFloat(textSpeedControl);
 
       // delete the predefined playlist
       let fileLength = e.target.files.length;
@@ -65,6 +61,7 @@ export default function chooseMusic() {
         let $audio = d.createElement("audio");
         $audio.src = URL.createObjectURL(e.target.files[i]);
         $audio.setAttribute("rel", "preload");
+        $audio.playbackRate = textSpeedControlToNumber; 
         $div.appendChild($text)
         $div.appendChild($audio)
         $playlist.appendChild($div)
@@ -84,6 +81,9 @@ export default function chooseMusic() {
         $span.addEventListener("click", () => {
           let $playlist = d.querySelector(".playlist");
           let $playlistSong = d.querySelectorAll(".playlist__song-container");
+          let $buttonSpeedControl = d.querySelector(".speed-control");
+          let textSpeedControl = $buttonSpeedControl.querySelector("p").textContent;
+          let textSpeedControlToNumber = parseFloat(textSpeedControl);
 
           if ($playlistSong.length !== 0) {
             $playlistSong.forEach(element => {
@@ -97,6 +97,8 @@ export default function chooseMusic() {
             let $div = d.createElement("div");
             $div = playlistDefault;
             $playlist.appendChild($div);
+            let audio = playlistDefault.querySelector("audio");
+            audio.playbackRate = textSpeedControlToNumber;
             if (playlistDefault.classList.contains("current__song")){
               let text = playlistDefault.querySelector("p");
               let audio = playlistDefault.querySelector("audio");
@@ -142,15 +144,7 @@ export default function chooseMusic() {
               $headChooseMusic.value = "";
 
               let $playlistDefault = d.querySelector(".playlist__default");
-
-              let text = $buttonSpeedControl.querySelector("p");
-              text.textContent = "1";
-        
-              $playlistSong.forEach((el) => {
-                let audio = el.querySelector("audio");
-                audio.playbackRate = 1;
-                text.innerHTML = 1;
-              });
+              
               $playlistDefault.remove();
         });
       }
